@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.TouristGroupMapper">
+  <resultMap id="BaseResultMap" type="com.bdqn.pojo.TouristGroup">
+    <id column="tg_id" jdbcType="INTEGER" property="tgId" />
+    <result column="tg_name" jdbcType="VARCHAR" property="tgName" />
+    <result column="tg_size" jdbcType="INTEGER" property="tgSize" />
+    <result column="h_id" jdbcType="INTEGER" property="hId" />
+    <result column="gu_id" jdbcType="INTEGER" property="guId" />
+    <result column="tg_days" jdbcType="INTEGER" property="tgDays" />
+    <result column="tg_time" jdbcType="DATE" property="tgTime" />
+    <result column="tg_price" jdbcType="INTEGER" property="tgPrice" />
+    <result column="sp_id" jdbcType="INTEGER" property="spId" />
+    <result column="tg_number" jdbcType="INTEGER" property="tgNumber" />
+    <result column="tg_place" jdbcType="VARCHAR" property="tgPlace" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tg_id, tg_name, tg_size, h_id, gu_id, tg_days, tg_time, tg_price, sp_id, tg_number, 
+    tg_place
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tourist_group
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tourist_group
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.pojo.TouristGroup">
+    insert into tourist_group (tg_id, tg_name, tg_size, 
+      h_id, gu_id, tg_days, 
+      tg_time, tg_price, sp_id, 
+      tg_number, tg_place)
+    values (#{tgId,jdbcType=INTEGER}, #{tgName,jdbcType=VARCHAR}, #{tgSize,jdbcType=INTEGER}, 
+      #{hId,jdbcType=INTEGER}, #{guId,jdbcType=INTEGER}, #{tgDays,jdbcType=INTEGER}, 
+      #{tgTime,jdbcType=DATE}, #{tgPrice,jdbcType=INTEGER}, #{spId,jdbcType=INTEGER}, 
+      #{tgNumber,jdbcType=INTEGER}, #{tgPlace,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.pojo.TouristGroup">
+    insert into tourist_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tgId != null">
+        tg_id,
+      </if>
+      <if test="tgName != null">
+        tg_name,
+      </if>
+      <if test="tgSize != null">
+        tg_size,
+      </if>
+      <if test="hId != null">
+        h_id,
+      </if>
+      <if test="guId != null">
+        gu_id,
+      </if>
+      <if test="tgDays != null">
+        tg_days,
+      </if>
+      <if test="tgTime != null">
+        tg_time,
+      </if>
+      <if test="tgPrice != null">
+        tg_price,
+      </if>
+      <if test="spId != null">
+        sp_id,
+      </if>
+      <if test="tgNumber != null">
+        tg_number,
+      </if>
+      <if test="tgPlace != null">
+        tg_place,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tgId != null">
+        #{tgId,jdbcType=INTEGER},
+      </if>
+      <if test="tgName != null">
+        #{tgName,jdbcType=VARCHAR},
+      </if>
+      <if test="tgSize != null">
+        #{tgSize,jdbcType=INTEGER},
+      </if>
+      <if test="hId != null">
+        #{hId,jdbcType=INTEGER},
+      </if>
+      <if test="guId != null">
+        #{guId,jdbcType=INTEGER},
+      </if>
+      <if test="tgDays != null">
+        #{tgDays,jdbcType=INTEGER},
+      </if>
+      <if test="tgTime != null">
+        #{tgTime,jdbcType=DATE},
+      </if>
+      <if test="tgPrice != null">
+        #{tgPrice,jdbcType=INTEGER},
+      </if>
+      <if test="spId != null">
+        #{spId,jdbcType=INTEGER},
+      </if>
+      <if test="tgNumber != null">
+        #{tgNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tgPlace != null">
+        #{tgPlace,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.pojo.TouristGroup">
+    update tourist_group
+    <set>
+      <if test="tgName != null">
+        tg_name = #{tgName,jdbcType=VARCHAR},
+      </if>
+      <if test="tgSize != null">
+        tg_size = #{tgSize,jdbcType=INTEGER},
+      </if>
+      <if test="hId != null">
+        h_id = #{hId,jdbcType=INTEGER},
+      </if>
+      <if test="guId != null">
+        gu_id = #{guId,jdbcType=INTEGER},
+      </if>
+      <if test="tgDays != null">
+        tg_days = #{tgDays,jdbcType=INTEGER},
+      </if>
+      <if test="tgTime != null">
+        tg_time = #{tgTime,jdbcType=DATE},
+      </if>
+      <if test="tgPrice != null">
+        tg_price = #{tgPrice,jdbcType=INTEGER},
+      </if>
+      <if test="spId != null">
+        sp_id = #{spId,jdbcType=INTEGER},
+      </if>
+      <if test="tgNumber != null">
+        tg_number = #{tgNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tgPlace != null">
+        tg_place = #{tgPlace,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.TouristGroup">
+    update tourist_group
+    set tg_name = #{tgName,jdbcType=VARCHAR},
+      tg_size = #{tgSize,jdbcType=INTEGER},
+      h_id = #{hId,jdbcType=INTEGER},
+      gu_id = #{guId,jdbcType=INTEGER},
+      tg_days = #{tgDays,jdbcType=INTEGER},
+      tg_time = #{tgTime,jdbcType=DATE},
+      tg_price = #{tgPrice,jdbcType=INTEGER},
+      sp_id = #{spId,jdbcType=INTEGER},
+      tg_number = #{tgNumber,jdbcType=INTEGER},
+      tg_place = #{tgPlace,jdbcType=VARCHAR}
+    where tg_id = #{tgId,jdbcType=INTEGER}
+  </update>
+</mapper>

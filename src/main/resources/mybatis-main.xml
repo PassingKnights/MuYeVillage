@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true"></setting>
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<!--自动生成文件时候把_转换-->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<typeAliases>
+		<!-- 别名 -->
+	</typeAliases>
+
+
+	<!--配置分页-->
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<!--调整分页合理化-->
+			<property name="reasonable" value="true"></property>
+		</plugin>
+
+	</plugins>
+
+	<mappers>
+	</mappers>
+</configuration>

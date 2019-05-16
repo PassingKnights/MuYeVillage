@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.PowerMapper">
+  <resultMap id="BaseResultMap" type="com.bdqn.pojo.Power">
+    <id column="pw_id" jdbcType="INTEGER" property="pwId" />
+    <result column="ro_id" jdbcType="INTEGER" property="roId" />
+    <result column="mu_id" jdbcType="INTEGER" property="muId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pw_id, ro_id, mu_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from power
+    where pw_id = #{pwId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from power
+    where pw_id = #{pwId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.pojo.Power">
+    insert into power (pw_id, ro_id, mu_id
+      )
+    values (#{pwId,jdbcType=INTEGER}, #{roId,jdbcType=INTEGER}, #{muId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.pojo.Power">
+    insert into power
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pwId != null">
+        pw_id,
+      </if>
+      <if test="roId != null">
+        ro_id,
+      </if>
+      <if test="muId != null">
+        mu_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pwId != null">
+        #{pwId,jdbcType=INTEGER},
+      </if>
+      <if test="roId != null">
+        #{roId,jdbcType=INTEGER},
+      </if>
+      <if test="muId != null">
+        #{muId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.pojo.Power">
+    update power
+    <set>
+      <if test="roId != null">
+        ro_id = #{roId,jdbcType=INTEGER},
+      </if>
+      <if test="muId != null">
+        mu_id = #{muId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pw_id = #{pwId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.Power">
+    update power
+    set ro_id = #{roId,jdbcType=INTEGER},
+      mu_id = #{muId,jdbcType=INTEGER}
+    where pw_id = #{pwId,jdbcType=INTEGER}
+  </update>
+</mapper>

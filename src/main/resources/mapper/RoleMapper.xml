@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.bdqn.pojo.Role">
+    <id column="ro_id" jdbcType="INTEGER" property="roId" />
+    <result column="ro_name" jdbcType="VARCHAR" property="roName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ro_id, ro_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where ro_id = #{roId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from role
+    where ro_id = #{roId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.pojo.Role">
+    insert into role (ro_id, ro_name)
+    values (#{roId,jdbcType=INTEGER}, #{roName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.pojo.Role">
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roId != null">
+        ro_id,
+      </if>
+      <if test="roName != null">
+        ro_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roId != null">
+        #{roId,jdbcType=INTEGER},
+      </if>
+      <if test="roName != null">
+        #{roName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.pojo.Role">
+    update role
+    <set>
+      <if test="roName != null">
+        ro_name = #{roName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ro_id = #{roId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.Role">
+    update role
+    set ro_name = #{roName,jdbcType=VARCHAR}
+    where ro_id = #{roId,jdbcType=INTEGER}
+  </update>
+</mapper>

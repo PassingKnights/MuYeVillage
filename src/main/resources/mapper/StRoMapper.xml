@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.StRoMapper">
+  <resultMap id="BaseResultMap" type="com.bdqn.pojo.StRo">
+    <id column="st_ro_id" jdbcType="INTEGER" property="stRoId" />
+    <result column="ro_id" jdbcType="INTEGER" property="roId" />
+    <result column="st_id" jdbcType="INTEGER" property="stId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    st_ro_id, ro_id, st_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from st_ro
+    where st_ro_id = #{stRoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from st_ro
+    where st_ro_id = #{stRoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.pojo.StRo">
+    insert into st_ro (st_ro_id, ro_id, st_id
+      )
+    values (#{stRoId,jdbcType=INTEGER}, #{roId,jdbcType=INTEGER}, #{stId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.pojo.StRo">
+    insert into st_ro
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stRoId != null">
+        st_ro_id,
+      </if>
+      <if test="roId != null">
+        ro_id,
+      </if>
+      <if test="stId != null">
+        st_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stRoId != null">
+        #{stRoId,jdbcType=INTEGER},
+      </if>
+      <if test="roId != null">
+        #{roId,jdbcType=INTEGER},
+      </if>
+      <if test="stId != null">
+        #{stId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.pojo.StRo">
+    update st_ro
+    <set>
+      <if test="roId != null">
+        ro_id = #{roId,jdbcType=INTEGER},
+      </if>
+      <if test="stId != null">
+        st_id = #{stId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where st_ro_id = #{stRoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.StRo">
+    update st_ro
+    set ro_id = #{roId,jdbcType=INTEGER},
+      st_id = #{stId,jdbcType=INTEGER}
+    where st_ro_id = #{stRoId,jdbcType=INTEGER}
+  </update>
+</mapper>

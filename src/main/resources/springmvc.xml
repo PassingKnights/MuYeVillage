@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans 
+                https://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/jee
+                https://www.springframework.org/schema/jee/spring-jee.xsd
+                http://www.springframework.org/schema/context
+       			https://www.springframework.org/schema/context/spring-context.xsd
+       			http://www.springframework.org/schema/mvc
+       			https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--扫描-->
+    <context:component-scan base-package="com.bdqn.controller"></context:component-scan>
+    <!--自定义视图-->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--结尾是jsp不用填-->
+    </bean>
+    <!--静态资源放行-->
+    <mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
+    <mvc:resources mapping="/images/**" location="/images/"></mvc:resources>
+    <mvc:resources mapping="/static/**" location="/static/"></mvc:resources>
+    <mvc:resources mapping="/view/**" location="/WEB-INF/view/"></mvc:resources>
+    <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+		<mvc:annotation-driven></mvc:annotation-driven>
+    <!--jack转换器-->
+</beans>
+       			

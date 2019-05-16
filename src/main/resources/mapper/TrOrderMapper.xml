@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.TrOrderMapper">
+  <resultMap id="BaseResultMap" type="com.bdqn.pojo.TrOrder">
+    <id column="or_id" jdbcType="INTEGER" property="orId" />
+    <result column="tr_id" jdbcType="INTEGER" property="trId" />
+    <result column="tg_id" jdbcType="INTEGER" property="tgId" />
+    <result column="or_time" jdbcType="DATE" property="orTime" />
+    <result column="or_boolean" jdbcType="VARCHAR" property="orBoolean" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    or_id, tr_id, tg_id, or_time, or_boolean
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tr_order
+    where or_id = #{orId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tr_order
+    where or_id = #{orId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.pojo.TrOrder">
+    insert into tr_order (or_id, tr_id, tg_id, 
+      or_time, or_boolean)
+    values (#{orId,jdbcType=INTEGER}, #{trId,jdbcType=INTEGER}, #{tgId,jdbcType=INTEGER}, 
+      #{orTime,jdbcType=DATE}, #{orBoolean,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.pojo.TrOrder">
+    insert into tr_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orId != null">
+        or_id,
+      </if>
+      <if test="trId != null">
+        tr_id,
+      </if>
+      <if test="tgId != null">
+        tg_id,
+      </if>
+      <if test="orTime != null">
+        or_time,
+      </if>
+      <if test="orBoolean != null">
+        or_boolean,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orId != null">
+        #{orId,jdbcType=INTEGER},
+      </if>
+      <if test="trId != null">
+        #{trId,jdbcType=INTEGER},
+      </if>
+      <if test="tgId != null">
+        #{tgId,jdbcType=INTEGER},
+      </if>
+      <if test="orTime != null">
+        #{orTime,jdbcType=DATE},
+      </if>
+      <if test="orBoolean != null">
+        #{orBoolean,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.pojo.TrOrder">
+    update tr_order
+    <set>
+      <if test="trId != null">
+        tr_id = #{trId,jdbcType=INTEGER},
+      </if>
+      <if test="tgId != null">
+        tg_id = #{tgId,jdbcType=INTEGER},
+      </if>
+      <if test="orTime != null">
+        or_time = #{orTime,jdbcType=DATE},
+      </if>
+      <if test="orBoolean != null">
+        or_boolean = #{orBoolean,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where or_id = #{orId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.TrOrder">
+    update tr_order
+    set tr_id = #{trId,jdbcType=INTEGER},
+      tg_id = #{tgId,jdbcType=INTEGER},
+      or_time = #{orTime,jdbcType=DATE},
+      or_boolean = #{orBoolean,jdbcType=VARCHAR}
+    where or_id = #{orId,jdbcType=INTEGER}
+  </update>
+</mapper>

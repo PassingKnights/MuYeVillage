@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.HotelMapper">
+  <resultMap id="BaseResultMap" type="com.bdqn.pojo.Hotel">
+    <id column="h_id" jdbcType="INTEGER" property="hId" />
+    <result column="h_name" jdbcType="VARCHAR" property="hName" />
+    <result column="h_score" jdbcType="VARCHAR" property="hScore" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    h_id, h_name, h_score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hotel
+    where h_id = #{hId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hotel
+    where h_id = #{hId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.pojo.Hotel">
+    insert into hotel (h_id, h_name, h_score
+      )
+    values (#{hId,jdbcType=INTEGER}, #{hName,jdbcType=VARCHAR}, #{hScore,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.pojo.Hotel">
+    insert into hotel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hId != null">
+        h_id,
+      </if>
+      <if test="hName != null">
+        h_name,
+      </if>
+      <if test="hScore != null">
+        h_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hId != null">
+        #{hId,jdbcType=INTEGER},
+      </if>
+      <if test="hName != null">
+        #{hName,jdbcType=VARCHAR},
+      </if>
+      <if test="hScore != null">
+        #{hScore,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.pojo.Hotel">
+    update hotel
+    <set>
+      <if test="hName != null">
+        h_name = #{hName,jdbcType=VARCHAR},
+      </if>
+      <if test="hScore != null">
+        h_score = #{hScore,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where h_id = #{hId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.Hotel">
+    update hotel
+    set h_name = #{hName,jdbcType=VARCHAR},
+      h_score = #{hScore,jdbcType=VARCHAR}
+    where h_id = #{hId,jdbcType=INTEGER}
+  </update>
+</mapper>

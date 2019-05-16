@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mapper.BrTouristMapper">
+  <resultMap id="BaseResultMap" type="com.bdqn.pojo.BrTourist">
+    <id column="tr_id" jdbcType="INTEGER" property="trId" />
+    <result column="tr_name" jdbcType="VARCHAR" property="trName" />
+    <result column="tr_sex" jdbcType="VARCHAR" property="trSex" />
+    <result column="tr_time" jdbcType="DATE" property="trTime" />
+    <result column="tr_phone" jdbcType="VARCHAR" property="trPhone" />
+    <result column="tr_email" jdbcType="VARCHAR" property="trEmail" />
+    <result column="tr_password" jdbcType="VARCHAR" property="trPassword" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    tr_id, tr_name, tr_sex, tr_time, tr_phone, tr_email, tr_password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from br_tourist
+    where tr_id = #{trId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from br_tourist
+    where tr_id = #{trId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bdqn.pojo.BrTourist">
+    insert into br_tourist (tr_id, tr_name, tr_sex, 
+      tr_time, tr_phone, tr_email, 
+      tr_password)
+    values (#{trId,jdbcType=INTEGER}, #{trName,jdbcType=VARCHAR}, #{trSex,jdbcType=VARCHAR}, 
+      #{trTime,jdbcType=DATE}, #{trPhone,jdbcType=VARCHAR}, #{trEmail,jdbcType=VARCHAR}, 
+      #{trPassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bdqn.pojo.BrTourist">
+    insert into br_tourist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="trId != null">
+        tr_id,
+      </if>
+      <if test="trName != null">
+        tr_name,
+      </if>
+      <if test="trSex != null">
+        tr_sex,
+      </if>
+      <if test="trTime != null">
+        tr_time,
+      </if>
+      <if test="trPhone != null">
+        tr_phone,
+      </if>
+      <if test="trEmail != null">
+        tr_email,
+      </if>
+      <if test="trPassword != null">
+        tr_password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="trId != null">
+        #{trId,jdbcType=INTEGER},
+      </if>
+      <if test="trName != null">
+        #{trName,jdbcType=VARCHAR},
+      </if>
+      <if test="trSex != null">
+        #{trSex,jdbcType=VARCHAR},
+      </if>
+      <if test="trTime != null">
+        #{trTime,jdbcType=DATE},
+      </if>
+      <if test="trPhone != null">
+        #{trPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="trEmail != null">
+        #{trEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="trPassword != null">
+        #{trPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bdqn.pojo.BrTourist">
+    update br_tourist
+    <set>
+      <if test="trName != null">
+        tr_name = #{trName,jdbcType=VARCHAR},
+      </if>
+      <if test="trSex != null">
+        tr_sex = #{trSex,jdbcType=VARCHAR},
+      </if>
+      <if test="trTime != null">
+        tr_time = #{trTime,jdbcType=DATE},
+      </if>
+      <if test="trPhone != null">
+        tr_phone = #{trPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="trEmail != null">
+        tr_email = #{trEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="trPassword != null">
+        tr_password = #{trPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tr_id = #{trId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.BrTourist">
+    update br_tourist
+    set tr_name = #{trName,jdbcType=VARCHAR},
+      tr_sex = #{trSex,jdbcType=VARCHAR},
+      tr_time = #{trTime,jdbcType=DATE},
+      tr_phone = #{trPhone,jdbcType=VARCHAR},
+      tr_email = #{trEmail,jdbcType=VARCHAR},
+      tr_password = #{trPassword,jdbcType=VARCHAR}
+    where tr_id = #{trId,jdbcType=INTEGER}
+  </update>
+</mapper>
