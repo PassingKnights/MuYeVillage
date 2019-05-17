@@ -1,5 +1,6 @@
 package com.bdqn.pojo;
 
+//角色和员工关联表
 public class StRo {
     private Integer stRoId;
 

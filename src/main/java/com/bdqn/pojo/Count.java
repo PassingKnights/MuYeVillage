@@ -1,5 +1,5 @@
 package com.bdqn.pojo;
-
+//统计表
 public class Count {
     private Integer coId;
 

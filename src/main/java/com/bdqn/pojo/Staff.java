@@ -1,7 +1,7 @@
 package com.bdqn.pojo;
 
 import java.util.Date;
-
+//员工表
 public class Staff {
     private Integer stId;
 

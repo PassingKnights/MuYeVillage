@@ -1,5 +1,6 @@
 package com.bdqn.pojo;
 
+//旅游点表
 public class TouristSpot {
     private Integer spId;
 

@@ -1,7 +1,7 @@
 package com.bdqn.pojo;
 
 import java.util.Date;
-
+//导游表
 public class Guide {
     private Integer guId;
 

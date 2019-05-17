@@ -1,7 +1,7 @@
 package com.bdqn.pojo;
 
 import java.util.Date;
-
+//旅游团表
 public class TouristGroup {
     private Integer tgId;
 

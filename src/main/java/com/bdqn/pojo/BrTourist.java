@@ -2,6 +2,7 @@ package com.bdqn.pojo;
 
 import java.util.Date;
 
+//游客表
 public class BrTourist {
     private Integer trId;
 

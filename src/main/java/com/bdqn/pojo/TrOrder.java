@@ -2,6 +2,7 @@ package com.bdqn.pojo;
 
 import java.util.Date;
 
+//订单表
 public class TrOrder {
     private Integer orId;
 

@@ -1,5 +1,6 @@
 package com.bdqn.pojo;
 
+//日志表
 public class Log {
     private Integer logId;
 

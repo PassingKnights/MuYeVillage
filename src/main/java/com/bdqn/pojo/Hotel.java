@@ -1,5 +1,5 @@
 package com.bdqn.pojo;
-
+//酒店表
 public class Hotel {
     private Integer hId;
 

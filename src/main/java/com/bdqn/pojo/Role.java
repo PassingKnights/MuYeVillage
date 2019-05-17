@@ -1,5 +1,6 @@
 package com.bdqn.pojo;
 
+//角色表
 public class Role {
     private Integer roId;
 

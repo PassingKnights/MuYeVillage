@@ -1,5 +1,5 @@
 package com.bdqn.pojo;
-
+//菜单表
 public class Muen {
     private Integer muId;
 

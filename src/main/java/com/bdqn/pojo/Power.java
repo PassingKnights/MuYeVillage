@@ -1,5 +1,5 @@
 package com.bdqn.pojo;
-
+//角色和菜单表
 public class Power {
     private Integer pwId;
 
