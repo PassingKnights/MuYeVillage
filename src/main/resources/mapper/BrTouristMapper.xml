@@ -9,9 +9,10 @@
     <result column="tr_phone" jdbcType="VARCHAR" property="trPhone" />
     <result column="tr_email" jdbcType="VARCHAR" property="trEmail" />
     <result column="tr_password" jdbcType="VARCHAR" property="trPassword" />
+    <result column="tr_picture" jdbcType="VARCHAR" property="trPicture" />
   </resultMap>
   <sql id="Base_Column_List">
-    tr_id, tr_name, tr_sex, tr_time, tr_phone, tr_email, tr_password
+    tr_id, tr_name, tr_sex, tr_time, tr_phone, tr_email, tr_password, tr_picture
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -26,10 +27,10 @@
   <insert id="insert" parameterType="com.bdqn.pojo.BrTourist">
     insert into br_tourist (tr_id, tr_name, tr_sex, 
       tr_time, tr_phone, tr_email, 
-      tr_password)
+      tr_password, tr_picture)
     values (#{trId,jdbcType=INTEGER}, #{trName,jdbcType=VARCHAR}, #{trSex,jdbcType=VARCHAR}, 
       #{trTime,jdbcType=DATE}, #{trPhone,jdbcType=VARCHAR}, #{trEmail,jdbcType=VARCHAR}, 
-      #{trPassword,jdbcType=VARCHAR})
+      #{trPassword,jdbcType=VARCHAR}, #{trPicture,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bdqn.pojo.BrTourist">
     insert into br_tourist
@@ -55,6 +56,9 @@
       <if test="trPassword != null">
         tr_password,
       </if>
+      <if test="trPicture != null">
+        tr_picture,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="trId != null">
@@ -77,6 +81,9 @@
       </if>
       <if test="trPassword != null">
         #{trPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="trPicture != null">
+        #{trPicture,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -101,6 +108,9 @@
       <if test="trPassword != null">
         tr_password = #{trPassword,jdbcType=VARCHAR},
       </if>
+      <if test="trPicture != null">
+        tr_picture = #{trPicture,jdbcType=VARCHAR},
+      </if>
     </set>
     where tr_id = #{trId,jdbcType=INTEGER}
   </update>
@@ -111,7 +121,8 @@
       tr_time = #{trTime,jdbcType=DATE},
       tr_phone = #{trPhone,jdbcType=VARCHAR},
       tr_email = #{trEmail,jdbcType=VARCHAR},
-      tr_password = #{trPassword,jdbcType=VARCHAR}
+      tr_password = #{trPassword,jdbcType=VARCHAR},
+      tr_picture = #{trPicture,jdbcType=VARCHAR}
     where tr_id = #{trId,jdbcType=INTEGER}
   </update>
 </mapper>

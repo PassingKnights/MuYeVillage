@@ -8,9 +8,10 @@
     <result column="st_time" jdbcType="DATE" property="stTime" />
     <result column="verson" jdbcType="INTEGER" property="verson" />
     <result column="st_photo" jdbcType="VARCHAR" property="stPhoto" />
+    <result column="st_password" jdbcType="VARCHAR" property="stPassword" />
   </resultMap>
   <sql id="Base_Column_List">
-    st_id, st_name, st_sex, st_time, verson, st_photo
+    st_id, st_name, st_sex, st_time, verson, st_photo, st_password
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,11 +25,11 @@
   </delete>
   <insert id="insert" parameterType="com.bdqn.pojo.Staff">
     insert into staff (st_id, st_name, st_sex, 
-      st_time, verson, st_photo
-      )
+      st_time, verson, st_photo, 
+      st_password)
     values (#{stId,jdbcType=INTEGER}, #{stName,jdbcType=VARCHAR}, #{stSex,jdbcType=VARCHAR}, 
-      #{stTime,jdbcType=DATE}, #{verson,jdbcType=INTEGER}, #{stPhoto,jdbcType=VARCHAR}
-      )
+      #{stTime,jdbcType=DATE}, #{verson,jdbcType=INTEGER}, #{stPhoto,jdbcType=VARCHAR}, 
+      #{stPassword,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bdqn.pojo.Staff">
     insert into staff
@@ -51,6 +52,9 @@
       <if test="stPhoto != null">
         st_photo,
       </if>
+      <if test="stPassword != null">
+        st_password,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="stId != null">
@@ -70,6 +74,9 @@
       </if>
       <if test="stPhoto != null">
         #{stPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="stPassword != null">
+        #{stPassword,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -91,6 +98,9 @@
       <if test="stPhoto != null">
         st_photo = #{stPhoto,jdbcType=VARCHAR},
       </if>
+      <if test="stPassword != null">
+        st_password = #{stPassword,jdbcType=VARCHAR},
+      </if>
     </set>
     where st_id = #{stId,jdbcType=INTEGER}
   </update>
@@ -100,7 +110,8 @@
       st_sex = #{stSex,jdbcType=VARCHAR},
       st_time = #{stTime,jdbcType=DATE},
       verson = #{verson,jdbcType=INTEGER},
-      st_photo = #{stPhoto,jdbcType=VARCHAR}
+      st_photo = #{stPhoto,jdbcType=VARCHAR},
+      st_password = #{stPassword,jdbcType=VARCHAR}
     where st_id = #{stId,jdbcType=INTEGER}
   </update>
 </mapper>

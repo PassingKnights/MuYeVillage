@@ -5,9 +5,10 @@
     <id column="mu_id" jdbcType="INTEGER" property="muId" />
     <result column="mu_name" jdbcType="VARCHAR" property="muName" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="mu_level" jdbcType="INTEGER" property="muLevel" />
   </resultMap>
   <sql id="Base_Column_List">
-    mu_id, mu_name, pid
+    mu_id, mu_name, pid, mu_level
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -20,10 +21,10 @@
     where mu_id = #{muId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.bdqn.pojo.Muen">
-    insert into muen (mu_id, mu_name, pid
-      )
-    values (#{muId,jdbcType=INTEGER}, #{muName,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}
-      )
+    insert into muen (mu_id, mu_name, pid, 
+      mu_level)
+    values (#{muId,jdbcType=INTEGER}, #{muName,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
+      #{muLevel,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.bdqn.pojo.Muen">
     insert into muen
@@ -37,6 +38,9 @@
       <if test="pid != null">
         pid,
       </if>
+      <if test="muLevel != null">
+        mu_level,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="muId != null">
@@ -47,6 +51,9 @@
       </if>
       <if test="pid != null">
         #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="muLevel != null">
+        #{muLevel,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -59,13 +66,17 @@
       <if test="pid != null">
         pid = #{pid,jdbcType=INTEGER},
       </if>
+      <if test="muLevel != null">
+        mu_level = #{muLevel,jdbcType=INTEGER},
+      </if>
     </set>
     where mu_id = #{muId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.Muen">
     update muen
     set mu_name = #{muName,jdbcType=VARCHAR},
-      pid = #{pid,jdbcType=INTEGER}
+      pid = #{pid,jdbcType=INTEGER},
+      mu_level = #{muLevel,jdbcType=INTEGER}
     where mu_id = #{muId,jdbcType=INTEGER}
   </update>
 </mapper>

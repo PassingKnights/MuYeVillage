@@ -4,9 +4,11 @@
   <resultMap id="BaseResultMap" type="com.bdqn.pojo.TouristSpot">
     <id column="sp_id" jdbcType="INTEGER" property="spId" />
     <result column="sp_name" jdbcType="VARCHAR" property="spName" />
+    <result column="sp_message" jdbcType="VARCHAR" property="spMessage" />
+    <result column="sp_pictrue" jdbcType="VARCHAR" property="spPictrue" />
   </resultMap>
   <sql id="Base_Column_List">
-    sp_id, sp_name
+    sp_id, sp_name, sp_message, sp_pictrue
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -19,8 +21,10 @@
     where sp_id = #{spId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.bdqn.pojo.TouristSpot">
-    insert into tourist_spot (sp_id, sp_name)
-    values (#{spId,jdbcType=INTEGER}, #{spName,jdbcType=VARCHAR})
+    insert into tourist_spot (sp_id, sp_name, sp_message, 
+      sp_pictrue)
+    values (#{spId,jdbcType=INTEGER}, #{spName,jdbcType=VARCHAR}, #{spMessage,jdbcType=VARCHAR}, 
+      #{spPictrue,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.bdqn.pojo.TouristSpot">
     insert into tourist_spot
@@ -31,6 +35,12 @@
       <if test="spName != null">
         sp_name,
       </if>
+      <if test="spMessage != null">
+        sp_message,
+      </if>
+      <if test="spPictrue != null">
+        sp_pictrue,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="spId != null">
@@ -38,6 +48,12 @@
       </if>
       <if test="spName != null">
         #{spName,jdbcType=VARCHAR},
+      </if>
+      <if test="spMessage != null">
+        #{spMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="spPictrue != null">
+        #{spPictrue,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -47,12 +63,20 @@
       <if test="spName != null">
         sp_name = #{spName,jdbcType=VARCHAR},
       </if>
+      <if test="spMessage != null">
+        sp_message = #{spMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="spPictrue != null">
+        sp_pictrue = #{spPictrue,jdbcType=VARCHAR},
+      </if>
     </set>
     where sp_id = #{spId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.bdqn.pojo.TouristSpot">
     update tourist_spot
-    set sp_name = #{spName,jdbcType=VARCHAR}
+    set sp_name = #{spName,jdbcType=VARCHAR},
+      sp_message = #{spMessage,jdbcType=VARCHAR},
+      sp_pictrue = #{spPictrue,jdbcType=VARCHAR}
     where sp_id = #{spId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -25,6 +25,12 @@ public class TouristGroup {
 
     private String tgPlace;
 
+    private Integer tgAllprice;
+
+    private Date tgStarttime;
+
+    private Date tgEndtime;
+
     public Integer getTgId() {
         return tgId;
     }
@@ -111,5 +117,29 @@ public class TouristGroup {
 
     public void setTgPlace(String tgPlace) {
         this.tgPlace = tgPlace == null ? null : tgPlace.trim();
+    }
+
+    public Integer getTgAllprice() {
+        return tgAllprice;
+    }
+
+    public void setTgAllprice(Integer tgAllprice) {
+        this.tgAllprice = tgAllprice;
+    }
+
+    public Date getTgStarttime() {
+        return tgStarttime;
+    }
+
+    public void setTgStarttime(Date tgStarttime) {
+        this.tgStarttime = tgStarttime;
+    }
+
+    public Date getTgEndtime() {
+        return tgEndtime;
+    }
+
+    public void setTgEndtime(Date tgEndtime) {
+        this.tgEndtime = tgEndtime;
     }
 }

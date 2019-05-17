@@ -7,6 +7,8 @@ public class Muen {
 
     private Integer pid;
 
+    private Integer muLevel;
+
     public Integer getMuId() {
         return muId;
     }
@@ -29,5 +31,13 @@ public class Muen {
 
     public void setPid(Integer pid) {
         this.pid = pid;
+    }
+
+    public Integer getMuLevel() {
+        return muLevel;
+    }
+
+    public void setMuLevel(Integer muLevel) {
+        this.muLevel = muLevel;
     }
 }

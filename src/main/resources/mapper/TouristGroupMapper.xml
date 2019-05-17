@@ -13,10 +13,13 @@
     <result column="sp_id" jdbcType="INTEGER" property="spId" />
     <result column="tg_number" jdbcType="INTEGER" property="tgNumber" />
     <result column="tg_place" jdbcType="VARCHAR" property="tgPlace" />
+    <result column="tg_allprice" jdbcType="INTEGER" property="tgAllprice" />
+    <result column="tg_starttime" jdbcType="TIMESTAMP" property="tgStarttime" />
+    <result column="tg_endtime" jdbcType="TIMESTAMP" property="tgEndtime" />
   </resultMap>
   <sql id="Base_Column_List">
     tg_id, tg_name, tg_size, h_id, gu_id, tg_days, tg_time, tg_price, sp_id, tg_number, 
-    tg_place
+    tg_place, tg_allprice, tg_starttime, tg_endtime
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -32,11 +35,13 @@
     insert into tourist_group (tg_id, tg_name, tg_size, 
       h_id, gu_id, tg_days, 
       tg_time, tg_price, sp_id, 
-      tg_number, tg_place)
+      tg_number, tg_place, tg_allprice, 
+      tg_starttime, tg_endtime)
     values (#{tgId,jdbcType=INTEGER}, #{tgName,jdbcType=VARCHAR}, #{tgSize,jdbcType=INTEGER}, 
       #{hId,jdbcType=INTEGER}, #{guId,jdbcType=INTEGER}, #{tgDays,jdbcType=INTEGER}, 
       #{tgTime,jdbcType=DATE}, #{tgPrice,jdbcType=INTEGER}, #{spId,jdbcType=INTEGER}, 
-      #{tgNumber,jdbcType=INTEGER}, #{tgPlace,jdbcType=VARCHAR})
+      #{tgNumber,jdbcType=INTEGER}, #{tgPlace,jdbcType=VARCHAR}, #{tgAllprice,jdbcType=INTEGER}, 
+      #{tgStarttime,jdbcType=TIMESTAMP}, #{tgEndtime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.bdqn.pojo.TouristGroup">
     insert into tourist_group
@@ -74,6 +79,15 @@
       <if test="tgPlace != null">
         tg_place,
       </if>
+      <if test="tgAllprice != null">
+        tg_allprice,
+      </if>
+      <if test="tgStarttime != null">
+        tg_starttime,
+      </if>
+      <if test="tgEndtime != null">
+        tg_endtime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tgId != null">
@@ -108,6 +122,15 @@
       </if>
       <if test="tgPlace != null">
         #{tgPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="tgAllprice != null">
+        #{tgAllprice,jdbcType=INTEGER},
+      </if>
+      <if test="tgStarttime != null">
+        #{tgStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tgEndtime != null">
+        #{tgEndtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -144,6 +167,15 @@
       <if test="tgPlace != null">
         tg_place = #{tgPlace,jdbcType=VARCHAR},
       </if>
+      <if test="tgAllprice != null">
+        tg_allprice = #{tgAllprice,jdbcType=INTEGER},
+      </if>
+      <if test="tgStarttime != null">
+        tg_starttime = #{tgStarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tgEndtime != null">
+        tg_endtime = #{tgEndtime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where tg_id = #{tgId,jdbcType=INTEGER}
   </update>
@@ -158,7 +190,10 @@
       tg_price = #{tgPrice,jdbcType=INTEGER},
       sp_id = #{spId,jdbcType=INTEGER},
       tg_number = #{tgNumber,jdbcType=INTEGER},
-      tg_place = #{tgPlace,jdbcType=VARCHAR}
+      tg_place = #{tgPlace,jdbcType=VARCHAR},
+      tg_allprice = #{tgAllprice,jdbcType=INTEGER},
+      tg_starttime = #{tgStarttime,jdbcType=TIMESTAMP},
+      tg_endtime = #{tgEndtime,jdbcType=TIMESTAMP}
     where tg_id = #{tgId,jdbcType=INTEGER}
   </update>
 </mapper>

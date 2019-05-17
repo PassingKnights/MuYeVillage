@@ -15,6 +15,8 @@ public class Staff {
 
     private String stPhoto;
 
+    private String stPassword;
+
     public Integer getStId() {
         return stId;
     }
@@ -61,5 +63,13 @@ public class Staff {
 
     public void setStPhoto(String stPhoto) {
         this.stPhoto = stPhoto == null ? null : stPhoto.trim();
+    }
+
+    public String getStPassword() {
+        return stPassword;
+    }
+
+    public void setStPassword(String stPassword) {
+        this.stPassword = stPassword == null ? null : stPassword.trim();
     }
 }

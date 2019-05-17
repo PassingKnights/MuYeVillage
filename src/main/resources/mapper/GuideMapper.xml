@@ -7,9 +7,10 @@
     <result column="gu_name" jdbcType="VARCHAR" property="guName" />
     <result column="gu_sex" jdbcType="VARCHAR" property="guSex" />
     <result column="gu_time" jdbcType="DATE" property="guTime" />
+    <result column="gu_picture" jdbcType="VARCHAR" property="guPicture" />
   </resultMap>
   <sql id="Base_Column_List">
-    gu_id, sp_id, gu_name, gu_sex, gu_time
+    gu_id, sp_id, gu_name, gu_sex, gu_time, gu_picture
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -23,9 +24,11 @@
   </delete>
   <insert id="insert" parameterType="com.bdqn.pojo.Guide">
     insert into guide (gu_id, sp_id, gu_name, 
-      gu_sex, gu_time)
+      gu_sex, gu_time, gu_picture
+      )
     values (#{guId,jdbcType=INTEGER}, #{spId,jdbcType=INTEGER}, #{guName,jdbcType=VARCHAR}, 
-      #{guSex,jdbcType=VARCHAR}, #{guTime,jdbcType=DATE})
+      #{guSex,jdbcType=VARCHAR}, #{guTime,jdbcType=DATE}, #{guPicture,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.bdqn.pojo.Guide">
     insert into guide
@@ -45,6 +48,9 @@
       <if test="guTime != null">
         gu_time,
       </if>
+      <if test="guPicture != null">
+        gu_picture,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="guId != null">
@@ -61,6 +67,9 @@
       </if>
       <if test="guTime != null">
         #{guTime,jdbcType=DATE},
+      </if>
+      <if test="guPicture != null">
+        #{guPicture,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -79,6 +88,9 @@
       <if test="guTime != null">
         gu_time = #{guTime,jdbcType=DATE},
       </if>
+      <if test="guPicture != null">
+        gu_picture = #{guPicture,jdbcType=VARCHAR},
+      </if>
     </set>
     where gu_id = #{guId,jdbcType=INTEGER}
   </update>
@@ -87,7 +99,8 @@
     set sp_id = #{spId,jdbcType=INTEGER},
       gu_name = #{guName,jdbcType=VARCHAR},
       gu_sex = #{guSex,jdbcType=VARCHAR},
-      gu_time = #{guTime,jdbcType=DATE}
+      gu_time = #{guTime,jdbcType=DATE},
+      gu_picture = #{guPicture,jdbcType=VARCHAR}
     where gu_id = #{guId,jdbcType=INTEGER}
   </update>
 </mapper>

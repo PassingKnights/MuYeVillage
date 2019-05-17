@@ -13,6 +13,8 @@ public class Guide {
 
     private Date guTime;
 
+    private String guPicture;
+
     public Integer getGuId() {
         return guId;
     }
@@ -51,5 +53,13 @@ public class Guide {
 
     public void setGuTime(Date guTime) {
         this.guTime = guTime;
+    }
+
+    public String getGuPicture() {
+        return guPicture;
+    }
+
+    public void setGuPicture(String guPicture) {
+        this.guPicture = guPicture == null ? null : guPicture.trim();
     }
 }

@@ -17,6 +17,8 @@ public class BrTourist {
 
     private String trPassword;
 
+    private String trPicture;
+
     public Integer getTrId() {
         return trId;
     }
@@ -71,5 +73,13 @@ public class BrTourist {
 
     public void setTrPassword(String trPassword) {
         this.trPassword = trPassword == null ? null : trPassword.trim();
+    }
+
+    public String getTrPicture() {
+        return trPicture;
+    }
+
+    public void setTrPicture(String trPicture) {
+        this.trPicture = trPicture == null ? null : trPicture.trim();
     }
 }
