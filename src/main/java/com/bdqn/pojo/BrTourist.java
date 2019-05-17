@@ -20,6 +20,20 @@ public class BrTourist {
 
     private String trPicture;
 
+    @Override
+    public String toString() {
+        return "BrTourist{" +
+                "trId=" + trId +
+                ", trName='" + trName + '\'' +
+                ", trSex='" + trSex + '\'' +
+                ", trTime=" + trTime +
+                ", trPhone='" + trPhone + '\'' +
+                ", trEmail='" + trEmail + '\'' +
+                ", trPassword='" + trPassword + '\'' +
+                ", trPicture='" + trPicture + '\'' +
+                '}';
+    }
+
     public Integer getTrId() {
         return trId;
     }
