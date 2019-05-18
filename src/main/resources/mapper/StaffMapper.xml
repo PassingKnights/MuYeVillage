@@ -13,6 +13,17 @@
   <sql id="Base_Column_List">
     st_id, st_name, st_sex, st_time, verson, st_photo, st_password
   </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from staff
+    <if test="index!=-1 and limit!=-1">
+      limit #{index},#{limit}
+    </if>
+  </select>
+
+
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
