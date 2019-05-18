@@ -45,18 +45,18 @@
 		<property name="sqlSessionFactoryBeanName" value="factory"></property>
 	</bean>
 
-	<bean id="transactionManager"
+	<!--<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	<!--配置声明式事务 -->
+	&lt;!&ndash;配置声明式事务 &ndash;&gt;
 	<tx:advice id="txAdvice"
 		transaction-manager="transactionManager">
-	</tx:advice>
+	</tx:advice>-->
 	<!--绑定切点和给切点添加事务 -->
-	<aop:config>
-		<aop:pointcut
-			expression="execution(* com.bdqn.service.Impl.*.*(..))" id="mycut" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="mycut" />
-	</aop:config>
+	<!--<aop:config>-->
+		<!--<aop:pointcut-->
+			<!--expression="execution(* com.bdqn.service.Impl.*.*(..))" id="mycut" />-->
+		<!--<aop:advisor advice-ref="txAdvice" pointcut-ref="mycut" />-->
+	<!--</aop:config>-->
 </beans>
