@@ -1,6 +1,8 @@
 package com.bdqn.pojo;
 
 import java.util.Date;
+import java.util.List;
+
 //员工表
 public class Staff {
     private Integer stId;
@@ -16,6 +18,30 @@ public class Staff {
     private String stPhoto;
 
     private String stPassword;
+    //有什么角色
+    private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "stId=" + stId +
+                ", stName='" + stName + '\'' +
+                ", stSex='" + stSex + '\'' +
+                ", stTime=" + stTime +
+                ", verson=" + verson +
+                ", stPhoto='" + stPhoto + '\'' +
+                ", stPassword='" + stPassword + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 
     public Integer getStId() {
         return stId;

@@ -9,11 +9,33 @@
     <result column="verson" jdbcType="INTEGER" property="verson" />
     <result column="st_photo" jdbcType="VARCHAR" property="stPhoto" />
     <result column="st_password" jdbcType="VARCHAR" property="stPassword" />
+    <!--对角色的映射，傅-->
+    <collection property="roles" ofType="com.bdqn.pojo.Role">
+      <id column="ro_id" jdbcType="INTEGER" property="roId" />
+      <result column="ro_name" jdbcType="VARCHAR" property="roName" />
+      <!--多对多对菜单的映射，傅-->
+      <collection property="menus" ofType="com.bdqn.pojo.Muen">
+        <id column="mu_id" jdbcType="INTEGER" property="muId" />
+        <result column="mu_name" jdbcType="VARCHAR" property="muName" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="mu_level" jdbcType="INTEGER" property="muLevel" />
+      </collection>
+    </collection>
   </resultMap>
   <sql id="Base_Column_List">
     st_id, st_name, st_sex, st_time, verson, st_photo, st_password
   </sql>
 
+  <select id="selectRole" resultMap="BaseResultMap">
+    SELECT staff.*,role.*
+    FROM staff
+    LEFT JOIN st_ro
+    ON staff.`st_id`=st_ro.`st_id`
+    LEFT JOIN role
+    ON st_ro.`ro_id`=role.`ro_id`
+  </select>
+
+  <!--查询所有或分页，傅-->
   <select id="selectAll" resultMap="BaseResultMap">
     select * from staff
     <if test="index!=-1 and limit!=-1">

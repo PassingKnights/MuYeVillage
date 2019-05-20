@@ -146,16 +146,15 @@
 
                 var staffTable = table.render({
                     elem:'#staffTable'
-                    ,url:'${request.getContextPath()}/staff/paging'
+                    ,url:'${request.getContextPath()}/staff/menus'
                     ,cols:[[
                         {field:'stId', width:80, title: '员工号',sort: true}
                         ,{field:'stName', width:110, title: '姓名'}
                         ,{field:'stPassword', width:90, title: '密码'}
-                        ,{field:'stSex', width:90, title: '性别'}
-                        ,{field:'stTime', width:180, title: '出生年月'}
+                        ,{field:'roName', width:90, title: '职务'}
                         ,{title:'操作',fixed:'right',width:210,align:'center',toolbar:'#barDemo'}
                     ]]
-                    ,page:true
+
                 });
 
                 //搜索
@@ -179,8 +178,8 @@
                     var event = obj.event;
                     if(event=='detail'){
                         var ss = "员工号："+data.stId+"<br/>姓名："+data.stName
-                            +"<br/>密码："+data.stPassword+"<br/>性别："+data.stSex
-                            +"<br/>出生年月："+data.stTime
+                            +"<br/>密码："+data.stPassword+"<br/>性别："+data.roName;
+
                         layer.alert(ss);//查看
                     }else if(event=='edit'){
                         //var parameters = "eid="+data.eid
@@ -192,10 +191,14 @@
                     }else if(event=='del'){//删除
                         layer.confirm('真的要删除吗',function(index){
 
-                            $.getJSON("${request.getContextPath()}/staff/delete",{"stId":data.stId},function(data){
-								obj.del();//删除对应行（tr）的DOM结构，并更新缓存
-								layer.close(index);//关闭弹出来的窗口
-                            })
+                            /*$.getJSON("../DelEmployeeServlet",{"eid":data.eid},function(data){
+                                if(data.result=="成功"){
+                                    obj.del();//删除对应行（tr）的DOM结构，并更新缓存
+                                    layer.close(index);//关闭弹出来的窗口
+                                }else{
+                                    layer.alert("失败");
+                                }
+                            })*/
                         })
                     }
                 });

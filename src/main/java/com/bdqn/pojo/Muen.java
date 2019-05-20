@@ -9,6 +9,16 @@ public class Muen {
 
     private Integer muLevel;
 
+    @Override
+    public String toString() {
+        return "Muen{" +
+                "muId=" + muId +
+                ", muName='" + muName + '\'' +
+                ", pid=" + pid +
+                ", muLevel=" + muLevel +
+                '}';
+    }
+
     public Integer getMuId() {
         return muId;
     }

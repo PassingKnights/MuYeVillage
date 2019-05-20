@@ -4,6 +4,14 @@
   <resultMap id="BaseResultMap" type="com.bdqn.pojo.Role">
     <id column="ro_id" jdbcType="INTEGER" property="roId" />
     <result column="ro_name" jdbcType="VARCHAR" property="roName" />
+    <!--多对多对菜单的映射，傅城-->
+    <collection property="menus" ofType="com.bdqn.pojo.Muen">
+      <id column="mu_id" jdbcType="INTEGER" property="muId" />
+      <result column="mu_name" jdbcType="VARCHAR" property="muName" />
+      <result column="pid" jdbcType="INTEGER" property="pid" />
+      <result column="mu_level" jdbcType="INTEGER" property="muLevel" />
+    </collection>
+
   </resultMap>
   <sql id="Base_Column_List">
     ro_id, ro_name
