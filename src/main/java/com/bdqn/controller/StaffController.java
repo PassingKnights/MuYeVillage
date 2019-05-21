@@ -32,25 +32,26 @@ public class StaffController {
     public String paging(int page,int limit){
         List<Staff> staff = staffService.selectAll(page, limit);
         String s = JSON.toJSONString(staff);
-        System.out.println(s);
+
 
         int count = staffService.selectAll(-1, -1).size();
         String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+count+",\"data\":"+s+"}";
-        System.out.println(ss);
+
         return ss;
     }
     //删除
     @RequestMapping("delete")
     @ResponseBody
     public String delete(@RequestParam("stId") Integer stId){
+        System.out.println(stId);
         staffService.delete(stId);
-        return null;
+        return "{\"result\":\"成功\"}";
     }
 
     //添加
     @RequestMapping("add")
     @ResponseBody
-    public String add(@RequestParam("staff") Staff staff){
+    public String add(Staff staff){
         staffService.add(staff);
         return null;
     }

@@ -119,6 +119,25 @@
                 <div class="content">
                     <div class="card-box">
                         <div class="am-u-sm-12">
+							<div class="layui-row">
+								<div class="layui-col-md5 layui-col-md-offset1">
+									<button id="addbtn" class="layui-btn layui-btn-danger layui-btn-radius">添加</button>
+								</div>
+								<div class="layui-col-md6">
+									<form id="stform" class="layui-form" action="" lay-filter="addstaff">
+										<div class="layui-form-item">
+											<label class="layui-form-label">姓名</label>
+											<div class="layui-input-inline">
+												<input type="text" name="stName" lay-verify="stName"
+													   autocomplete="off" placeholder="请输入员工姓名" class="layui-input">
+											</div>
+											<div class="layui-input-inline">
+												<button class="layui-btn" lay-submit="" lay-filter="finish">搜索</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
                             <table class="layui-hide" id="staffTable" lay-filter="demo"></table>
                         </div>
                     </div>
@@ -140,9 +159,10 @@
         <script src="../../layui/layui.js"></script>
 
         <script type="text/javascript">
-            layui.use(['table','form'],function(){
+            layui.use(['table','form','layer'],function(){
                 var table = layui.table
-                    ,form = layui.form;
+                    ,form = layui.form
+					,layuier=layui.layer;
 
                 var staffTable = table.render({
                     elem:'#staffTable'
@@ -173,6 +193,22 @@
                     return false;
                 });*/
 
+
+                //添加
+				$("#addbtn").click(function () {
+                    layuier.open({
+                        type:2,
+                        content:"/AfterEnd/html/addStaff.jsp",
+                        area:['460px','500px'],
+						end:function () {
+                            staffTable.reload({
+                                page:{
+                                    curr:1
+                                }
+                            });
+                        }
+                    });
+                })
                 //监听工具条
                 table.on('tool(demo)',function(obj){
                     var data = obj.data;
