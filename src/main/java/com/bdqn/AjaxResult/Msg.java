@@ -1,7 +1,7 @@
 package com.bdqn.AjaxResult;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 //通用的返回类
 public class Msg {
@@ -12,34 +12,29 @@ public class Msg {
     //提示信息
     private String msg;
 
-    private Integer count;
-
     //用户返回给浏览器的数据
-    private List<Object> data = new ArrayList<>();
+    private Map<String,Object> extend = new HashMap<String, Object>();
 
     //代表成功
-    public static Msg success(Integer count) {
+    public  static Msg success(){
         Msg result = new Msg();
-        result.setCode(0);
-        result.setCount(count);
+        result.setCode(100);
         result.setMsg("处理成功");
         return result;
     }
-
     //代表失败
-    public static Msg fail() {
+    public  static Msg fail(){
         Msg result = new Msg();
         result.setCode(200);
         result.setMsg("失败");
         return result;
     }
-
     //用户添加
-    public Msg add(Object value) {
-        this.getData().add(value);
-        return this;
-    }
+    public Msg add(String key,Object value){
+        this.getExtend().put(key,value);
+            return this;
 
+    }
 
     public int getCode() {
         return code;
@@ -57,22 +52,11 @@ public class Msg {
         this.msg = msg;
     }
 
-    public Integer getCount() {
-        return count;
+    public Map<String, Object> getExtend() {
+        return extend;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
-    }
-
-    public List<Object> getData() {
-        return data;
-    }
-
-    public void setData(List<Object> data) {
-        this.data = data;
+    public void setExtend(Map<String, Object> extend) {
+        this.extend = extend;
     }
 }
-
-
-
