@@ -1,5 +1,8 @@
 package com.bdqn.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //游客表
@@ -10,6 +13,8 @@ public class BrTourist {
 
     private String trSex;
 
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date trTime;
 
     private String trPhone;

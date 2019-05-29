@@ -8,7 +8,7 @@
     <title>添加员工页面</title>
 </head>
 <body>
-    <form class="layui-form" action="" id="addform" lay-filter="addstaff">
+    <form id="stform" class="layui-form" action="" lay-filter="addstaff">
         <div class="layui-form-item">
             <label class="layui-form-label">姓名</label>
             <div class="layui-input-inline">
@@ -50,39 +50,21 @@
                 <input type="text" name="verson" id="verson" lay-verify="verson" placeholder="账号" autocomplete="off" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
-            <div class="layui-input-block">
-                <input type="radio" name="status" value="完成"title="完成" checked>
-                <input type="radio" name="status" value="已预定" title="已预定">
-                <input type="radio" name="status" value="已删除" title="已删除">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
-            <div class="layui-input-inline">
-                <select name="status" lay-filter="status">
-                    <option value=""></option>
-                    <option value="空闲">空闲</option>
-                    <option value="已住">已住</option>
-                </select>
-            </div>
-        </div>
-
 
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button id="finish" class="layui-btn" lay-submit="" lay-filter="finish">完成</button>
+                <button class="layui-btn" lay-submit="" lay-filter="finish">完成</button>
             </div>
         </div>
     </form>
 <script src="../../js/jquery-3.3.1.js"></script>
 <script src="../../layui/layui.js" charset="utf-8"></script>
 <script>
-    layui.use(['layer','laydate'],function () {
+    layui.use(['layer','laydate','form'],function () {
         var layer=layui.layer,
-        laydate=layui.laydate;
+        laydate=layui.laydate,
+        form=layui.form;
 
         lay('.date-item').each(function(){
             laydate.render({
@@ -90,17 +72,30 @@
                 ,trigger: 'click'
             });
         });
+        //父级页面相关的
         var index = parent.layer.getFrameIndex(window.name);
-        $("#finish").click(function () {
-            // var stName = $("input[name=stName]").val();
-            // console.log(stName);
-            var ss = $("#addform").serializeArray();
-            $.getJSON("${request.getContextPath()}/staff/add",ss,function(data){
-                parent.layer.msg('添加成功');
-                parent.layer.close(index);
-            })
 
-        })
+        //提交
+        form.on('submit(finish)', function(data){
+            // var a = JSON.stringify(data.field);
+            // var sss = JSON.parse(a);
+            var ss = $("#stform").serializeArray();
+            console.log(ss);
+            $.ajax({
+                url:"${request.getContextPath()}/staff/add",
+                //contentType:"application/json;charset=utf-8",
+                data:ss,
+                type:"get",
+                success:function (datas) {
+
+                    parent.layer.msg('添加成功');
+                    parent.layer.close(index);
+                }
+            })
+            return false;
+        });
+
+
 
     })
 </script>

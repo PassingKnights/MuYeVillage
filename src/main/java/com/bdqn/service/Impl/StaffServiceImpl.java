@@ -40,7 +40,7 @@ public class StaffServiceImpl implements StaffService {
 
     @Override
     public void add(Staff staff) {
-        staffMapper.insert(staff);
+        staffMapper.insertSelective(staff);
     }
 
     @Override

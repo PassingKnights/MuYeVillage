@@ -1,5 +1,8 @@
 package com.bdqn.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +13,8 @@ public class Staff {
     private String stName;
 
     private String stSex;
-
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date stTime;
 
     private Integer verson;
@@ -41,6 +45,20 @@ public class Staff {
                 ", stPassword='" + stPassword + '\'' +
                 ", roles=" + roles +
                 '}';
+    }
+
+    public Staff() {
+    }
+
+    public Staff(Integer stId, String stName, String stSex, Date stTime, Integer verson, String stPhoto, String stPassword, List<Role> roles) {
+        this.stId = stId;
+        this.stName = stName;
+        this.stSex = stSex;
+        this.stTime = stTime;
+        this.verson = verson;
+        this.stPhoto = stPhoto;
+        this.stPassword = stPassword;
+        this.roles = roles;
     }
 
     public Integer getStId() {

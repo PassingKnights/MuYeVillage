@@ -37,7 +37,7 @@
 
   <!--查询所有或分页，傅-->
   <select id="selectAll" resultMap="BaseResultMap">
-    select * from staff
+    select * from staff order by st_id desc
     <if test="index!=-1 and limit!=-1">
       limit #{index},#{limit}
     </if>
