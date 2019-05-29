@@ -20,4 +20,5 @@ public class brTouristServiceImpl implements brTouristService {
         System.out.println("test");
         return brTouristMapper.SelAll();
     }
+
 }
