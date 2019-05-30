@@ -1,7 +1,7 @@
 import com.bdqn.mapper.BrTouristMapper;
 import com.bdqn.mapper.PageMapper;
 import com.bdqn.pojo.BrTourist;
-import org.hibernate.cache.cfg.spi.DomainDataRegionBuildingContext;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

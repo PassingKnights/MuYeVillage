@@ -142,4 +142,24 @@ public class TouristGroup {
     public void setTgEndtime(Date tgEndtime) {
         this.tgEndtime = tgEndtime;
     }
+
+    @Override
+    public String toString() {
+        return "TouristGroup{" +
+                "tgId=" + tgId +
+                ", tgName='" + tgName + '\'' +
+                ", tgSize=" + tgSize +
+                ", hId=" + hId +
+                ", guId=" + guId +
+                ", tgDays=" + tgDays +
+                ", tgTime=" + tgTime +
+                ", tgPrice=" + tgPrice +
+                ", spId=" + spId +
+                ", tgNumber=" + tgNumber +
+                ", tgPlace='" + tgPlace + '\'' +
+                ", tgAllprice=" + tgAllprice +
+                ", tgStarttime=" + tgStarttime +
+                ", tgEndtime=" + tgEndtime +
+                '}';
+    }
 }
