@@ -9,40 +9,60 @@
     <result column="verson" jdbcType="INTEGER" property="verson" />
     <result column="st_photo" jdbcType="VARCHAR" property="stPhoto" />
     <result column="st_password" jdbcType="VARCHAR" property="stPassword" />
+
+    <result column="ro_name" jdbcType="VARCHAR" property="roName"/>
     <!--对角色的映射，傅-->
-    <collection property="roles" ofType="com.bdqn.pojo.Role">
+    <!--<collection property="roles" ofType="com.bdqn.pojo.Role">
       <id column="ro_id" jdbcType="INTEGER" property="roId" />
       <result column="ro_name" jdbcType="VARCHAR" property="roName" />
-      <!--多对多对菜单的映射，傅-->
+      &lt;!&ndash;多对多对菜单的映射，傅&ndash;&gt;
       <collection property="menus" ofType="com.bdqn.pojo.Muen">
         <id column="mu_id" jdbcType="INTEGER" property="muId" />
         <result column="mu_name" jdbcType="VARCHAR" property="muName" />
         <result column="pid" jdbcType="INTEGER" property="pid" />
         <result column="mu_level" jdbcType="INTEGER" property="muLevel" />
       </collection>
-    </collection>
+    </collection>-->
   </resultMap>
   <sql id="Base_Column_List">
     st_id, st_name, st_sex, st_time, verson, st_photo, st_password
   </sql>
 
   <select id="selectRole" resultMap="BaseResultMap">
-    SELECT staff.*,role.*
+    SELECT staff.*,role.ro_name
     FROM staff
     LEFT JOIN st_ro
     ON staff.`st_id`=st_ro.`st_id`
     LEFT JOIN role
     ON st_ro.`ro_id`=role.`ro_id`
-  </select>
-
-  <!--查询所有或分页，傅-->
-  <select id="selectAll" resultMap="BaseResultMap">
-    select * from staff order by st_id desc
+    <if test="stId!=-1">
+      where staff.`st_id`=#{stId}
+    </if>
     <if test="index!=-1 and limit!=-1">
       limit #{index},#{limit}
     </if>
   </select>
 
+  <!--查询所有或分页，傅-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from staff
+    <if test="stName!=null and stName!=''">
+      where st_name like concat('%',#{stName},'%')
+    </if>
+    order by st_id desc
+    <if test="index!=-1 and limit!=-1">
+      limit #{index},#{limit}
+    </if>
+  </select>
+  <!--删除角色-->
+  <select id="deleteRole">
+    DELETE FROM st_ro WHERE st_id=#{stId} AND ro_id=(SELECT ro_id FROM role WHERE ro_name=#{roName})
+  </select>
+
+  <!--添加角色-->
+  <select id="addRole">
+    INSERT INTO st_ro (ro_id,st_id) VALUES ((SELECT ro_id FROM role WHERE ro_name=#{roName}),#{stId})
+  </select>
 
 
 

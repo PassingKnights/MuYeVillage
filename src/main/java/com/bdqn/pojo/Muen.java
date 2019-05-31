@@ -8,6 +8,8 @@ public class Muen {
     private Integer pid;
 
     private Integer muLevel;
+    //子菜单
+    private String sonName;
 
     @Override
     public String toString() {
@@ -16,7 +18,27 @@ public class Muen {
                 ", muName='" + muName + '\'' +
                 ", pid=" + pid +
                 ", muLevel=" + muLevel +
+                ", sonName='" + sonName + '\'' +
                 '}';
+    }
+
+    public Muen() {
+    }
+
+    public Muen(Integer muId, String muName, Integer pid, Integer muLevel, String sonName) {
+        this.muId = muId;
+        this.muName = muName;
+        this.pid = pid;
+        this.muLevel = muLevel;
+        this.sonName = sonName;
+    }
+
+    public String getSonName() {
+        return sonName;
+    }
+
+    public void setSonName(String sonName) {
+        this.sonName = sonName;
     }
 
     public Integer getMuId() {

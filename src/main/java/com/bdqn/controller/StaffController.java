@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,7 +24,6 @@ public class StaffController {
     public String show(){
         Staff staff = staffService.selectByPrimaryKey(1);
         String s = JSON.toJSONString(staff);
-        System.out.println(s);
         return "index.jsp";
     }
 
@@ -30,11 +31,9 @@ public class StaffController {
     @RequestMapping(value = "/paging",produces = "text/html;charset=utf-8")
     @ResponseBody
     public String paging(int page,int limit){
-        List<Staff> staff = staffService.selectAll(page, limit);
+        List<Staff> staff = staffService.selectAll(null,page, limit);
         String s = JSON.toJSONString(staff);
-
-
-        int count = staffService.selectAll(-1, -1).size();
+        int count = staffService.selectAll(null,-1, -1).size();
         String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+count+",\"data\":"+s+"}";
 
         return ss;
@@ -43,7 +42,6 @@ public class StaffController {
     @RequestMapping("delete")
     @ResponseBody
     public String delete(@RequestParam("stId") Integer stId){
-        System.out.println(stId);
         staffService.delete(stId);
         return "{\"result\":\"成功\"}";
     }
@@ -62,20 +60,68 @@ public class StaffController {
         staffService.update(staff);
         return null;
     }
-
-
-
-
-    @RequestMapping("/menus")
+    //搜索
+    @RequestMapping(value = "/search",produces = "text/html;charset=utf-8")
     @ResponseBody
-    public String getMenus(){
-        List<Staff> list = staffService.selectRole();
+    public String search(String stName,int page,int limit){
+        List<Staff> list = staffService.selectAll(stName, page, limit);
         String s = JSON.toJSONString(list);
-        System.out.println(s);
-        String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+list.size()+",\"data\":"+s+"}";
+        int count = staffService.selectAll(stName,-1, -1).size();
+        String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+count+",\"data\":"+s+"}";
+        return ss;
+    }
+
+
+    //以下是员工和角色的
+
+    //分页查询，单查或全查
+    @RequestMapping(value = "/menus",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String getMenus(Integer stId,Integer page,Integer limit){
+        List<Staff> list=null;
+        List<Staff> allList =null;
+        if(stId!=null){
+            list = staffService.selectRole(stId,page,limit);
+            allList = staffService.selectRole(stId,-1,-1);
+        }else {
+           list = staffService.selectRole(-1,page,limit);
+            allList = staffService.selectRole(-1,-1,-1);
+        }
+
+        String s = JSON.toJSONString(list);
+        String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+allList.size()+",\"data\":"+s+"}";
         return ss;
     }
 
 
 
+    //跳转到个人的角色分配页面
+    @RequestMapping("/goRoleEdit")
+    public String goRoleEdit(Integer stId, HttpServletRequest request, HttpSession session){
+        //request.setAttribute("stId",stId);
+        session.setAttribute("stId",stId);
+        return "redirect:/AfterEnd/html/staffRoleEdit.jsp";
+    }
+
+    //删除角色
+    @RequestMapping(value = "/deleteRole",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String deleteRole(@RequestParam("stId") Integer stId,String roName){
+        staffService.deleteRole(stId,roName);
+        return "{\"result\":\"成功\"}";
+    }
+    //添加角色
+    @RequestMapping(value = "/addRole",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String addRole(@RequestParam("stId") Integer stId,String roName,Integer page,Integer limit){
+        System.out.println(stId+roName);
+        staffService.addRole(stId,roName);
+
+        List<Staff> list = staffService.selectRole(stId,page,limit);
+        List<Staff> allList = staffService.selectRole(stId,-1,-1);
+
+        String s = JSON.toJSONString(list);
+        String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+allList.size()+",\"data\":"+s+"}";
+        return ss;
+    }
 }

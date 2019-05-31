@@ -22,35 +22,21 @@ public class Staff {
     private String stPhoto;
 
     private String stPassword;
-    //有什么角色
-    private List<Role> roles;
 
-    public List<Role> getRoles() {
-        return roles;
+    private String roName;
+
+    public String getRoName() {
+        return roName;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    @Override
-    public String toString() {
-        return "Staff{" +
-                "stId=" + stId +
-                ", stName='" + stName + '\'' +
-                ", stSex='" + stSex + '\'' +
-                ", stTime=" + stTime +
-                ", verson=" + verson +
-                ", stPhoto='" + stPhoto + '\'' +
-                ", stPassword='" + stPassword + '\'' +
-                ", roles=" + roles +
-                '}';
+    public void setRoName(String roName) {
+        this.roName = roName;
     }
 
     public Staff() {
     }
 
-    public Staff(Integer stId, String stName, String stSex, Date stTime, Integer verson, String stPhoto, String stPassword, List<Role> roles) {
+    public Staff(Integer stId, String stName, String stSex, Date stTime, Integer verson, String stPhoto, String stPassword, String roName) {
         this.stId = stId;
         this.stName = stName;
         this.stSex = stSex;
@@ -58,7 +44,7 @@ public class Staff {
         this.verson = verson;
         this.stPhoto = stPhoto;
         this.stPassword = stPassword;
-        this.roles = roles;
+        this.roName = roName;
     }
 
     public Integer getStId() {

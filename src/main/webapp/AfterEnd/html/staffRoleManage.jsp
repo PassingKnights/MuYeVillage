@@ -154,7 +154,7 @@
                         ,{field:'roName', width:90, title: '职务'}
                         ,{title:'操作',fixed:'right',width:210,align:'center',toolbar:'#barDemo'}
                     ]]
-
+					,page:true
                 });
 
                 //搜索
@@ -176,41 +176,19 @@
                 table.on('tool(demo)',function(obj){
                     var data = obj.data;
                     var event = obj.event;
-                    if(event=='detail'){
-                        var ss = "员工号："+data.stId+"<br/>姓名："+data.stName
-                            +"<br/>密码："+data.stPassword+"<br/>性别："+data.roName;
-
-                        layer.alert(ss);//查看
-                    }else if(event=='edit'){
-                        //var parameters = "eid="+data.eid
+                    if(event=='edit'){
+                        var parameters = "stId="+data.stId;
                         //+"&type="+data.type+"&price="+data.price
                         //+"&peoplenum="+data.peoplenum+"&status="+data.status+"&remark="+data.remark
                         //layer.alert("userManageEdit.jsp?"+parameters);
-                        //window.location.href="employeeManageEdit.jsp?"+parameters;//编辑
-
-                    }else if(event=='del'){//删除
-                        layer.confirm('真的要删除吗',function(index){
-
-                            /*$.getJSON("../DelEmployeeServlet",{"eid":data.eid},function(data){
-                                if(data.result=="成功"){
-                                    obj.del();//删除对应行（tr）的DOM结构，并更新缓存
-                                    layer.close(index);//关闭弹出来的窗口
-                                }else{
-                                    layer.alert("失败");
-                                }
-                            })*/
-                        })
+                        window.location.href="${request.getContextPath()}/staff/goRoleEdit?"+parameters;//编辑
                     }
                 });
             });
-
-
         </script>
 
         <script type="text/html" id="barDemo">
-            <a class="layui-btn layui-btn-primary  layui-btn-xs" lay-event="detail">查看</a>
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">职位编辑</a>
         </script>
 	</body>
 	

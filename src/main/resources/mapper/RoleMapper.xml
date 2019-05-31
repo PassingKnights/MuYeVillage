@@ -5,14 +5,38 @@
     <id column="ro_id" jdbcType="INTEGER" property="roId" />
     <result column="ro_name" jdbcType="VARCHAR" property="roName" />
     <!--多对多对菜单的映射，傅城-->
-    <collection property="menus" ofType="com.bdqn.pojo.Muen">
-      <id column="mu_id" jdbcType="INTEGER" property="muId" />
+    <collection property="oneMenus" ofType="com.bdqn.pojo.Muen">
+      <result column="mu_id" jdbcType="INTEGER" property="muId" />
       <result column="mu_name" jdbcType="VARCHAR" property="muName" />
       <result column="pid" jdbcType="INTEGER" property="pid" />
       <result column="mu_level" jdbcType="INTEGER" property="muLevel" />
+        <result column="twoname" property="sonName"/>
     </collection>
 
   </resultMap>
+    <!--添加某个角色的某个菜单-->
+    <select id="add">
+        INSERT INTO `power`(ro_id,mu_id) VALUES(#{roId},(SELECT mu_id FROM muen WHERE mu_name=#{name}))
+    </select>
+    <!--删除某个菜单-->
+    <select id="delete">
+        DELETE FROM `power` WHERE ro_id=#{roId} AND mu_id=(SELECT mu_id FROM muen WHERE mu_name=#{name})
+    </select>
+<!--查某个角色的一级二级菜单-->
+  <select id="selectById" resultMap="BaseResultMap">
+    SELECT r.ro_id,r.ro_name,r.mu_id,r.mu_name,rm.mu_name twoname
+FROM (SELECT * FROM role_menu WHERE ro_id=#{roId}) r
+LEFT JOIN (SELECT * FROM role_menu WHERE ro_id=#{roId}) rm
+ON r.mu_id=rm.pid
+WHERE r.mu_level=1
+  </select>
+<!--查所有角色-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ro_id,ro_name from role
+  </select>
+
+
+
   <sql id="Base_Column_List">
     ro_id, ro_name
   </sql>

@@ -41,7 +41,7 @@
             <label class="layui-form-label">手机号</label>
             <div class="layui-input-inline">
                 <input type="text" name="stPhoto" lay-verify="stPhoto"
-                        autocomplete="off" placeholder="价格" class="layui-input">
+                        autocomplete="off" placeholder="手机号" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -80,7 +80,7 @@
             // var a = JSON.stringify(data.field);
             // var sss = JSON.parse(a);
             var ss = $("#stform").serializeArray();
-            console.log(ss);
+            //console.log(ss);
             $.ajax({
                 url:"${request.getContextPath()}/staff/add",
                 //contentType:"application/json;charset=utf-8",

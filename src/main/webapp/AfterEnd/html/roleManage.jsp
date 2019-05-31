@@ -120,25 +120,22 @@
                     <div class="card-box">
                         <div class="am-u-sm-12">
 							<div class="layui-row">
-								<div class="layui-col-md5 layui-col-md-offset1">
-									<button id="addbtn" class="layui-btn layui-btn-danger layui-btn-radius">添加</button>
-								</div>
-								<div class="layui-col-md6">
-									<form id="stform" class="layui-form" action="" lay-filter="addstaff">
+								<div class="layui-col-md6 layui-col-md-offset1">
+									<form id="roform" class="layui-form" action="" lay-filter="addstaff">
 										<div class="layui-form-item">
-											<label class="layui-form-label">姓名</label>
+											<label class="layui-form-label">角色</label>
 											<div class="layui-input-inline">
-												<input type="text" name="stName" lay-verify="stName"
-													   autocomplete="off" placeholder="请输入员工姓名" class="layui-input">
+												<input type="text" name="roName"
+													   autocomplete="off" placeholder="请输入添加的角色名" class="layui-input">
 											</div>
 											<div class="layui-input-inline">
-												<button class="layui-btn" lay-submit="" lay-filter="finish">搜索</button>
+												<button class="layui-btn layui-btn-danger layui-btn-radius" lay-submit="" lay-filter="finish">添加</button>
 											</div>
 										</div>
 									</form>
 								</div>
 							</div>
-                            <table class="layui-hide" id="staffTable" lay-filter="demo"></table>
+                            <table class="layui-hide" id="roleTable" lay-filter="demo"></table>
                         </div>
                     </div>
                 </div>
@@ -164,71 +161,49 @@
                     ,form = layui.form
 					,layuier=layui.layer;
 
-                var staffTable = table.render({
-                    elem:'#staffTable'
-                    ,url:'${request.getContextPath()}/staff/paging'
+                var roleTable = table.render({
+                    elem:'#roleTable'
+                    ,url:'${request.getContextPath()}/role/showAll'
                     ,cols:[[
-                        {field:'stId', width:80, title: '员工号',sort: true}
-                        ,{field:'stName', width:110, title: '姓名'}
-                        ,{field:'stPassword', width:90, title: '密码'}
-                        ,{field:'stSex', width:90, title: '性别'}
-                        ,{field:'stTime', width:180, title: '出生年月'}
+                        {field:'roId', width:80, title: '编号',sort: true}
+                        ,{field:'roName', width:110, title: '角色'}
                         ,{title:'操作',fixed:'right',width:210,align:'center',toolbar:'#barDemo'}
                     ]]
-                    ,page:true
+
                 });
 
-                //搜索
+                //添加
                 form.on('submit(finish)', function(data){
                     var a = JSON.stringify(data.field);
                     var sss = JSON.parse(a);//将格式解析为json格式。
-                    //console.log(sss);
-                    staffTable.reload({
-                        url:'${request.getContextPath()}/staff/search'
+
+					// var sss = $("#roform").serializeArray();
+                    console.log(sss);
+                    roleTable.reload({
+                        url:'${request.getContextPath()}/role/add'
                         ,where:sss
-                        ,page:{
-                            curr:1
-                        }
+
                     });
                     return false;
                 });
 
 
-                //添加
-				$("#addbtn").click(function () {
-                    layuier.open({
-                        type:2,
-                        content:"/AfterEnd/html/addStaff.jsp",
-                        area:['460px','500px'],
-						end:function () {
-                            staffTable.reload({
-                                page:{
-                                    curr:1
-                                }
-                            });
-                        }
-                    });
-                })
                 //监听工具条
                 table.on('tool(demo)',function(obj){
                     var data = obj.data;
                     var event = obj.event;
                     if(event=='detail'){
-                        var ss = "员工号："+data.stId+"<br/>姓名："+data.stName
-                            +"<br/>密码："+data.stPassword+"<br/>性别："+data.stSex
-                            +"<br/>出生年月："+data.stTime
+                        var ss = "编号："+data.roId+"<br/>角色："+data.roName
                         layer.alert(ss);//查看
                     }else if(event=='edit'){
-                        //var parameters = "eid="+data.eid
-                        //+"&type="+data.type+"&price="+data.price
-                        //+"&peoplenum="+data.peoplenum+"&status="+data.status+"&remark="+data.remark
-                        //layer.alert("userManageEdit.jsp?"+parameters);
-                        //window.location.href="employeeManageEdit.jsp?"+parameters;//编辑
+                        var parameters = "roId="+data.roId;
+                        console.log("${request.getContextPath()}/role/edit?"+parameters);
+                        window.location.href="${request.getContextPath()}/role/edit?"+parameters;//编辑
 
                     }else if(event=='del'){//删除
                         layer.confirm('真的要删除吗',function(index){
 
-                            $.getJSON("${request.getContextPath()}/staff/delete",{"stId":data.stId},function(data){
+                            $.getJSON("${request.getContextPath()}/role/delete",{"roId":data.roId},function(data){
 								obj.del();//删除对应行（tr）的DOM结构，并更新缓存
 								layer.close(index);//关闭弹出来的窗口
                             })
@@ -242,7 +217,7 @@
 
         <script type="text/html" id="barDemo">
             <a class="layui-btn layui-btn-primary  layui-btn-xs" lay-event="detail">查看</a>
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑权限</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </script>
 	</body>

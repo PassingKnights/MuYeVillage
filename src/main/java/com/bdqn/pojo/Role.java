@@ -8,24 +8,24 @@ public class Role {
 
     private String roName;
 
-    //含有的菜单
-    private List<Muen> menus;
-
-    public List<Muen> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(List<Muen> menus) {
-        this.menus = menus;
-    }
+    //含有的一级菜单
+    private List<Muen> oneMenus;
 
     @Override
     public String toString() {
         return "Role{" +
                 "roId=" + roId +
                 ", roName='" + roName + '\'' +
-                ", menus=" + menus +
+                ", oneMenus=" + oneMenus +
                 '}';
+    }
+
+    public List<Muen> getOneMenus() {
+        return oneMenus;
+    }
+
+    public void setOneMenus(List<Muen> oneMenus) {
+        this.oneMenus = oneMenus;
     }
 
     public Integer getRoId() {

@@ -22,15 +22,16 @@ public class StaffServiceImpl implements StaffService {
 
     //查所有，当cur=-1查所有。分页
     @Override
-    public List<Staff> selectAll(int cur,int limit) {
+    public List<Staff> selectAll(String stName,int cur,int limit) {
         int index = (cur-1)*limit;
-        List<Staff> list = staffMapper.selectAll(index, limit);
+        List<Staff> list = staffMapper.selectAll(stName,index, limit);
         return list;
     }
 
     @Override
-    public List<Staff> selectRole() {
-        return staffMapper.selectRole();
+    public List<Staff> selectRole(Integer stId,Integer cur,Integer limit) {
+        int index = (cur-1)*limit;
+        return staffMapper.selectRole(stId,index, limit);
     }
 
     @Override
@@ -48,12 +49,22 @@ public class StaffServiceImpl implements StaffService {
         staffMapper.updateByPrimaryKeySelective(staff);
     }
 
+    @Override
+    public void deleteRole(Integer id, String roName) {
+        staffMapper.deleteRole(id,roName);
+    }
+
+    @Override
+    public void addRole(Integer id, String roName) {
+        staffMapper.addRole(id,roName);
+    }
+
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("ApplicationContext.xml");
         StaffServiceImpl staffServiceImpl = ac.getBean("staffServiceImpl", StaffServiceImpl.class);
 //        Staff staff = staffServiceImpl.selectByPrimaryKey(1);
 //        System.out.println(staff);
-        List<Staff> list = staffServiceImpl.selectRole();
+        List<Staff> list = staffServiceImpl.selectRole(-1,1,10);
         for (Staff s : list) {
             System.out.println(s);
         }

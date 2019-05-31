@@ -18,7 +18,11 @@ public interface StaffMapper {
 
     int updateByPrimaryKey(Staff record);
     //查询所有员工
-    List<Staff> selectAll(@Param("index")int index,@Param("limit")int limit);
+    List<Staff> selectAll(@Param("stName")String stName,@Param("index")int index,@Param("limit")int limit);
     //查角色
-    List<Staff> selectRole();
+    List<Staff> selectRole(@Param("stId")Integer stId,@Param("index")Integer index,@Param("limit")Integer limit);
+    //删除角色
+    void deleteRole(@Param("stId")Integer stId,@Param("roName")String roName);
+    //添加角色
+    void addRole(@Param("stId")Integer stId,@Param("roName")String roName);
 }

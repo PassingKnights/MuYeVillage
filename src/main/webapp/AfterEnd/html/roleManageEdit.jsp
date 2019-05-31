@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>后台模板</title>
+		<title>角色权限</title>
 		<link rel="stylesheet" href="../assets/css/amazeui.css" />
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../assets/css/core.css" />
@@ -26,7 +26,7 @@
 			<div class="contain">
 				<ul class="am-nav am-navbar-nav am-navbar-left">
 
-					<li><h4 class="page-title">基本表格</h4></li>
+					<li><h4 class="page-title">编辑${role.roName}的权限</h4></li>
 				</ul>
 				
 				<ul class="am-nav am-navbar-nav am-navbar-right">
@@ -120,25 +120,47 @@
                     <div class="card-box">
                         <div class="am-u-sm-12">
 							<div class="layui-row">
-								<div class="layui-col-md5 layui-col-md-offset1">
-									<button id="addbtn" class="layui-btn layui-btn-danger layui-btn-radius">添加</button>
-								</div>
-								<div class="layui-col-md6">
-									<form id="stform" class="layui-form" action="" lay-filter="addstaff">
+								<div class="layui-col-md12">
+									<form id="roform" class="layui-form" action="" lay-filter="addstaff">
+										<input id="roId" name="roId" type="hidden" value="${role.roId}">
 										<div class="layui-form-item">
-											<label class="layui-form-label">姓名</label>
+											<label class="layui-form-label">一级</label>
 											<div class="layui-input-inline">
-												<input type="text" name="stName" lay-verify="stName"
-													   autocomplete="off" placeholder="请输入员工姓名" class="layui-input">
+												<select name="muName" lay-filter="type">
+													<option value="" selected=""></option>
+													<option value="数据管理">数据管理</option>
+													<option value="权限管理">权限管理</option>
+													<option value="日志查看">日志查看</option>
+													<option value="主页">主页</option>
+													<option value="数据统计">数据统计</option>
+												</select>
+											</div>
+											<label class="layui-form-label">二级</label>
+											<div class="layui-input-inline">
+												<select name="sonName" lay-filter="type">
+													<option value="" selected=""></option>
+													<option value="游客管理">游客管理</option>
+													<option value="订单管理">订单管理</option>
+													<option value="员工管理">员工管理</option>
+													<option value="酒店管理">酒店管理</option>
+													<option value="导游管理">导游管理</option>
+													<option value="旅游团管理">旅游团管理</option>
+													<option value="员工权限">员工管理</option>
+													<option value="角色管理">角色管理</option>
+													<option value="菜单管理">菜单管理</option>
+													<option value="游客日志">游客日志</option>
+													<option value="员工日志">员工日志</option>
+												</select>
 											</div>
 											<div class="layui-input-inline">
-												<button class="layui-btn" lay-submit="" lay-filter="finish">搜索</button>
+												<button class="layui-btn layui-btn-danger layui-btn-radius" lay-submit="" lay-filter="finish">添加</button>
 											</div>
 										</div>
 									</form>
 								</div>
 							</div>
-                            <table class="layui-hide" id="staffTable" lay-filter="demo"></table>
+                            <table class="layui-hide" id="roleTable" lay-filter="demo"></table>
+
                         </div>
                     </div>
                 </div>
@@ -164,71 +186,43 @@
                     ,form = layui.form
 					,layuier=layui.layer;
 
-                var staffTable = table.render({
-                    elem:'#staffTable'
-                    ,url:'${request.getContextPath()}/staff/paging'
+                var roId = $("#roId").val();
+                var roleTable = table.render({
+                    elem:'#roleTable'
+                    ,url:'${request.getContextPath()}/role/showById'
+					,where:{"roId":roId}
                     ,cols:[[
-                        {field:'stId', width:80, title: '员工号',sort: true}
-                        ,{field:'stName', width:110, title: '姓名'}
-                        ,{field:'stPassword', width:90, title: '密码'}
-                        ,{field:'stSex', width:90, title: '性别'}
-                        ,{field:'stTime', width:180, title: '出生年月'}
+                        {field:'muId', width:80, title: '编号',sort: true}
+                        ,{field:'muName', width:110, title: '一级菜单'}
+                        ,{field:'sonName', width:110, title: '二级菜单'}
                         ,{title:'操作',fixed:'right',width:210,align:'center',toolbar:'#barDemo'}
                     ]]
-                    ,page:true
                 });
 
-                //搜索
+                //添加
                 form.on('submit(finish)', function(data){
                     var a = JSON.stringify(data.field);
                     var sss = JSON.parse(a);//将格式解析为json格式。
-                    //console.log(sss);
-                    staffTable.reload({
-                        url:'${request.getContextPath()}/staff/search'
+
+					// var sss = $("#roform").serializeArray();
+                    console.log(sss);
+                    roleTable.reload({
+                        url:'${request.getContextPath()}/role/addMenu'
                         ,where:sss
-                        ,page:{
-                            curr:1
-                        }
+
                     });
                     return false;
                 });
 
 
-                //添加
-				$("#addbtn").click(function () {
-                    layuier.open({
-                        type:2,
-                        content:"/AfterEnd/html/addStaff.jsp",
-                        area:['460px','500px'],
-						end:function () {
-                            staffTable.reload({
-                                page:{
-                                    curr:1
-                                }
-                            });
-                        }
-                    });
-                })
                 //监听工具条
                 table.on('tool(demo)',function(obj){
                     var data = obj.data;
                     var event = obj.event;
-                    if(event=='detail'){
-                        var ss = "员工号："+data.stId+"<br/>姓名："+data.stName
-                            +"<br/>密码："+data.stPassword+"<br/>性别："+data.stSex
-                            +"<br/>出生年月："+data.stTime
-                        layer.alert(ss);//查看
-                    }else if(event=='edit'){
-                        //var parameters = "eid="+data.eid
-                        //+"&type="+data.type+"&price="+data.price
-                        //+"&peoplenum="+data.peoplenum+"&status="+data.status+"&remark="+data.remark
-                        //layer.alert("userManageEdit.jsp?"+parameters);
-                        //window.location.href="employeeManageEdit.jsp?"+parameters;//编辑
-
-                    }else if(event=='del'){//删除
+                    if(event=='del'){//删除
                         layer.confirm('真的要删除吗',function(index){
-
-                            $.getJSON("${request.getContextPath()}/staff/delete",{"stId":data.stId},function(data){
+                            var s = {"roId":roId,"muName":data.muName,"sonName":data.sonName};
+                            $.getJSON("${request.getContextPath()}/role/deleteMenu",s,function(data){
 								obj.del();//删除对应行（tr）的DOM结构，并更新缓存
 								layer.close(index);//关闭弹出来的窗口
                             })
@@ -241,8 +235,6 @@
         </script>
 
         <script type="text/html" id="barDemo">
-            <a class="layui-btn layui-btn-primary  layui-btn-xs" lay-event="detail">查看</a>
-            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </script>
 	</body>
