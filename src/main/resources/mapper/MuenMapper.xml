@@ -7,9 +7,19 @@
     <result column="pid" jdbcType="INTEGER" property="pid" />
     <result column="mu_level" jdbcType="INTEGER" property="muLevel" />
   </resultMap>
+
   <sql id="Base_Column_List">
     mu_id, mu_name, pid, mu_level
   </sql>
+
+  <!--查所有-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+     <include refid="Base_Column_List"/>
+     from muen
+    limit #{index},#{limit}
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

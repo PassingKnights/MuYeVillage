@@ -19,12 +19,24 @@ import java.util.List;
 public class StaffController {
     @Autowired
     private StaffServiceImpl staffService;
-
+    //测试
     @RequestMapping("/show")
     public String show(){
         Staff staff = staffService.selectByPrimaryKey(1);
         String s = JSON.toJSONString(staff);
         return "index.jsp";
+    }
+
+    //登录
+    @RequestMapping(value = "/login",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String login(String username,String password,HttpSession session){
+        Staff staff = staffService.login(username, password);
+        if (staff==null){
+            return null;
+        }
+        session.setAttribute("staff",staff);
+        return "{\"result\":\"成功\"}";
     }
 
     //显示，分页

@@ -4,10 +4,43 @@
   <resultMap id="BaseResultMap" type="com.bdqn.pojo.TrOrder">
     <id column="or_id" jdbcType="INTEGER" property="orId" />
     <result column="tr_id" jdbcType="INTEGER" property="trId" />
-    <result column="tg_id" jdbcType="INTEGER" property="tgId" />
     <result column="or_time" jdbcType="DATE" property="orTime" />
     <result column="or_boolean" jdbcType="VARCHAR" property="orBoolean" />
+
+    <association property="group" javaType="com.bdqn.pojo.Group">
+      <id column="tg_id" jdbcType="INTEGER" property="tgId" />
+      <result column="tg_name" jdbcType="VARCHAR" property="tgName" />
+      <result column="tg_size" jdbcType="INTEGER" property="tgSize" />
+      <result column="tg_days" jdbcType="INTEGER" property="tgDays" />
+      <result column="tg_time" jdbcType="DATE" property="tgTime" />
+      <result column="tg_price" jdbcType="INTEGER" property="tgPrice" />
+      <result column="tg_number" jdbcType="INTEGER" property="tgNumber" />
+      <result column="tg_place" jdbcType="VARCHAR" property="tgPlace" />
+      <result column="tg_allprice" jdbcType="INTEGER" property="tgAllprice" />
+      <result column="tg_starttime" jdbcType="TIMESTAMP" property="tgStarttime" />
+      <result column="tg_endtime" jdbcType="TIMESTAMP" property="tgEndtime" />
+
+      <association property="hotel" javaType="com.bdqn.pojo.Hotel">
+        <result column="h_name" jdbcType="VARCHAR" property="hName" />
+        <result column="h_score" jdbcType="VARCHAR" property="hScore" />
+      </association>
+      <association property="spot" javaType="com.bdqn.pojo.TouristSpot">
+        <result column="sp_name" jdbcType="VARCHAR" property="spName" />
+      </association>
+      <association property="guide" javaType="com.bdqn.pojo.Guide">
+        <result column="gu_name" jdbcType="VARCHAR" property="guName" />
+      </association>
+    </association>
+
   </resultMap>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from `order` limit #{index},#{limit}
+  </select>
+
+
+
+
   <sql id="Base_Column_List">
     or_id, tr_id, tg_id, or_time, or_boolean
   </sql>

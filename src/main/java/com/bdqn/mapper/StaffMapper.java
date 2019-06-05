@@ -25,4 +25,5 @@ public interface StaffMapper {
     void deleteRole(@Param("stId")Integer stId,@Param("roName")String roName);
     //添加角色
     void addRole(@Param("stId")Integer stId,@Param("roName")String roName);
+
 }

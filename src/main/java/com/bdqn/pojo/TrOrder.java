@@ -13,6 +13,28 @@ public class TrOrder {
     private Date orTime;
 
     private String orBoolean;
+    //团
+    private Group group;
+
+    public Group getGroup() {
+        return group;
+    }
+
+    @Override
+    public String toString() {
+        return "TrOrder{" +
+                "orId=" + orId +
+                ", trId=" + trId +
+                ", tgId=" + tgId +
+                ", orTime=" + orTime +
+                ", orBoolean='" + orBoolean + '\'' +
+                ", group=" + group +
+                '}';
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 
     public Integer getOrId() {
         return orId;

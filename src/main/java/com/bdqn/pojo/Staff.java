@@ -18,7 +18,7 @@ public class Staff {
     private Date stTime;
 
     private Integer verson;
-
+    //代表账号，改（傅）
     private String stPhoto;
 
     private String stPassword;

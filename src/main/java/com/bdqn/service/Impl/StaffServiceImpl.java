@@ -59,6 +59,17 @@ public class StaffServiceImpl implements StaffService {
         staffMapper.addRole(id,roName);
     }
 
+    @Override
+    public Staff login(String username, String password) {
+        List<Staff> list = staffMapper.selectAll(null, -1, -1);
+        for (Staff staff : list) {
+            if(staff.getStPhoto().equals(username) && staff.getStPassword().equals(password)){
+                return staff;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         ApplicationContext ac = new ClassPathXmlApplicationContext("ApplicationContext.xml");
         StaffServiceImpl staffServiceImpl = ac.getBean("staffServiceImpl", StaffServiceImpl.class);

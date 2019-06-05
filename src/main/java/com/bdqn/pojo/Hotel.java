@@ -11,6 +11,17 @@ public class Hotel {
 
     private String hIntroduce;
 
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "hId=" + hId +
+                ", hName='" + hName + '\'' +
+                ", hScore='" + hScore + '\'' +
+                ", hPictrue='" + hPictrue + '\'' +
+                ", hIntroduce='" + hIntroduce + '\'' +
+                '}';
+    }
+
     public Integer gethId() {
         return hId;
     }

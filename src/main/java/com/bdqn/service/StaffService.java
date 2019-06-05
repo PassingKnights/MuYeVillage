@@ -23,4 +23,6 @@ public interface StaffService {
     public void deleteRole(Integer id,String roName);
     //添加角色
     public void addRole(Integer id,String roName);
+    //登录
+    public Staff login(String username,String password);
 }
