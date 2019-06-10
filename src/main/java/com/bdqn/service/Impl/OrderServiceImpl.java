@@ -20,5 +20,9 @@ public class OrderServiceImpl {
         return orderMapper.selectAll(index,limit);
     }
 
+    public List<TrOrder> selectById(Integer id){
+        return orderMapper.selectByTrid(id);
+    }
+
 
 }

@@ -32,4 +32,15 @@ public class OrderController {
         String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+list.size()+",\"data\":"+s+"}";
         return ss;
     }
+
+    //查某个人的订单
+    @RequestMapping(value = "/selectByTrId",produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String selectByTrId(Integer trId){
+        List<TrOrder> list = orderService.selectById(trId);
+        String s = JSON.toJSONString(list);
+        System.out.println(s);
+        String ss = "{\"code\":0,\"msg\":\"\",\"count\":"+list.size()+",\"data\":"+s+"}";
+        return ss;
+    }
 }

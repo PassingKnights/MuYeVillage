@@ -19,4 +19,6 @@ public interface TrOrderMapper {
     int updateByPrimaryKey(TrOrder record);
 
     List<TrOrder> selectAll(@Param("index") Integer index, @Param("limit") Integer limit);
+    //查某个人的订单
+    List<TrOrder> selectByTrid(@Param("trId")Integer trId);
 }

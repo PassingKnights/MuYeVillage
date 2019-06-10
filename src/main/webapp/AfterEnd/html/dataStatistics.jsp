@@ -120,10 +120,11 @@
                     <div class="card-box">
                         <div class="am-u-sm-12">
 							<div class="layui-row">
-								<div class="layui-col-md5 layui-col-md-offset1">
+								<div class="layui-col-md6">
+									<div id="order" style="width: 450px;height:400px;"></div>
 								</div>
 								<div class="layui-col-md6">
-									<div id="chart"></div>
+									<div id="chart" style="width: 450px;height:400px;"></div>
 								</div>
 							</div>
                         </div>
@@ -144,13 +145,17 @@
 		<script type="text/javascript" src="../assets/js/blockUI.js" ></script>
         <%--layui引入--%>
         <script src="../../layui/layui.js"></script>
+		<%--echarts--%>
+		<script src="../../echarts/echarts.min.js"></script>
+
 
         <script type="text/javascript">
             var myChart = echarts.init(document.getElementById('chart'));
+            var order = echarts.init(document.getElementById('order'));
             // 指定图表的配置项和数据
             var option = {
                 title: {
-                    text: 'ECharts 入门示例'
+                    text: '旅游点订单数'
                 },
                 tooltip: {},
                 legend: {
@@ -167,8 +172,71 @@
                 }]
             };
 
+            var option2 = {
+                title:{
+                    text:"订单一周情况"
+				},
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一','周二','周三','周四','周五','周六','周日']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        name:'邮件营销',
+                        type:'line',
+                        stack: '总量',
+                        data:[120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name:'联盟广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name:'视频广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name:'直接访问',
+                        type:'line',
+                        stack: '总量',
+                        data:[320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name:'搜索引擎',
+                        type:'line',
+                        stack: '总量',
+                        data:[820, 932, 901, 934, 1290, 1330, 1320]
+                    }
+                ]
+            };
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption(option);
+			order.setOption(option2);
         </script>
 	</body>
 	

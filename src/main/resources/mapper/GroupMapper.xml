@@ -30,4 +30,7 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select * from `group`
   </select>
+  <select id="selectBySpot" resultMap="BaseResultMap">
+
+  </select>
 </mapper>

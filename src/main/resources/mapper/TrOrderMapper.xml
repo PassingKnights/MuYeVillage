@@ -37,8 +37,10 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select * from `order` limit #{index},#{limit}
   </select>
-
-
+  <!--查某个人的订单-->
+  <select id="selectByTrid" resultMap="BaseResultMap">
+    SELECT * FROM `order` WHERE tr_id=#{trId}
+  </select>
 
 
   <sql id="Base_Column_List">

@@ -7,4 +7,6 @@ import java.util.List;
 public interface GroupMapper {
     //查所有
     public List<Group> selectAll();
+    //根据景点查
+    public List<Group> selectBySpot();
 }

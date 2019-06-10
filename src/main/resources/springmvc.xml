@@ -27,7 +27,8 @@
     <mvc:resources mapping="/view/**" location="/WEB-INF/view/"></mvc:resources>
     <mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
     <mvc:resources mapping="/layui/**" location="/layui/"></mvc:resources>
-    <mvc:resources mapping="/AfterEnd/html/*.html" location="/AfterEnd/html/"/>
+    <mvc:resources mapping="/echarts/**" location="/echarts/"></mvc:resources>
+    <mvc:resources mapping="/AfterEnd/**.html" location="/AfterEnd/"/>
     <mvc:resources mapping="/AfterEnd/assets/**" location="/AfterEnd/assets/"/>
 		<mvc:annotation-driven></mvc:annotation-driven>
     <!--jack转换器-->
