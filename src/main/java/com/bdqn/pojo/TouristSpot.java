@@ -4,12 +4,37 @@ package com.bdqn.pojo;
 public class TouristSpot {
     private Integer spId;
 
-    private String spName;
+    private String spName;//地点
 
-    private String spMessage;
+    private String spMessage;//消息
 
-    private String spPictrue;
+//    private String spPictrue;//照片
 
+    //tostring
+
+
+    @Override
+    public String toString() {
+        return "TouristSpot{" +
+                "spId=" + spId +
+                ", spName='" + spName + '\'' +
+                ", spMessage='" + spMessage + '\'' +
+                '}';
+    }
+
+    //有参
+    public TouristSpot(Integer spId, String spName, String spMessage) {
+        this.spId = spId;
+        this.spName = spName;
+        this.spMessage = spMessage;
+    }
+
+    //无参
+    public TouristSpot() {
+    }
+
+
+    //set 和 get
     public Integer getSpId() {
         return spId;
     }
@@ -34,11 +59,5 @@ public class TouristSpot {
         this.spMessage = spMessage == null ? null : spMessage.trim();
     }
 
-    public String getSpPictrue() {
-        return spPictrue;
-    }
 
-    public void setSpPictrue(String spPictrue) {
-        this.spPictrue = spPictrue == null ? null : spPictrue.trim();
-    }
 }

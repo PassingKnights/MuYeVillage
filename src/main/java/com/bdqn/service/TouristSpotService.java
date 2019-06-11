@@ -1,12 +1,12 @@
-package com.bdqn.mapper;
+package com.bdqn.service;
 
 import com.bdqn.pojo.TouristSpot;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface TouristSpotMapper {
-    //删除
+public interface TouristSpotService {
+
+    //通过id删除
     int deleteByPrimaryKey(Integer spId);
 
     //添加
@@ -20,8 +20,6 @@ public interface TouristSpotMapper {
 
     int updateByPrimaryKey(TouristSpot record);
 
-    //全查询 以及分页
-    List<TouristSpot> selectSpot(@Param("index") int index, @Param("limit") int limit);
-
-
+    //全查询 分页
+    List<TouristSpot> selectSpot(int cur, int limit);
 }

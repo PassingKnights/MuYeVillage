@@ -7,25 +7,40 @@
     <result column="sp_message" jdbcType="VARCHAR" property="spMessage" />
     <result column="sp_pictrue" jdbcType="VARCHAR" property="spPictrue" />
   </resultMap>
+
+
+  <!--全查询和分页-->
+  <select id="selectSpot" resultMap="BaseResultMap" >
+      select * from tourist_spot order by sp_id desc
+    <if test="index!=-1 and limit!=-1">
+      limit #{index},#{limit}
+    </if>
+  </select>
+
+
   <sql id="Base_Column_List">
     sp_id, sp_name, sp_message, sp_pictrue
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tourist_spot
     where sp_id = #{spId,jdbcType=INTEGER}
   </select>
+
+  <!--删除-->
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from tourist_spot
     where sp_id = #{spId,jdbcType=INTEGER}
   </delete>
+
+  <!--增加-->
   <insert id="insert" parameterType="com.bdqn.pojo.TouristSpot">
-    insert into tourist_spot (sp_id, sp_name, sp_message, 
-      sp_pictrue)
-    values (#{spId,jdbcType=INTEGER}, #{spName,jdbcType=VARCHAR}, #{spMessage,jdbcType=VARCHAR}, 
-      #{spPictrue,jdbcType=VARCHAR})
+    insert into tourist_spot (sp_name,sp_message)
+    values (#{spName,jdbcType=VARCHAR}, #{spMessage,jdbcType=VARCHAR})
   </insert>
+
   <insert id="insertSelective" parameterType="com.bdqn.pojo.TouristSpot">
     insert into tourist_spot
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -65,9 +80,6 @@
       </if>
       <if test="spMessage != null">
         sp_message = #{spMessage,jdbcType=VARCHAR},
-      </if>
-      <if test="spPictrue != null">
-        sp_pictrue = #{spPictrue,jdbcType=VARCHAR},
       </if>
     </set>
     where sp_id = #{spId,jdbcType=INTEGER}
