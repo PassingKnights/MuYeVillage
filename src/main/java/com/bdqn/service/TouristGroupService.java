@@ -1,6 +1,10 @@
 package com.bdqn.service;
 
+import com.bdqn.pojo.Staff;
 import com.bdqn.pojo.TouristGroup;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TouristGroupService {
     void deleteByPrimaryKey(Integer tgId);
@@ -14,4 +18,6 @@ public interface TouristGroupService {
     void updateByPrimaryKeySelective(TouristGroup record);
 
     void updateByPrimaryKey(TouristGroup record);
+
+    List<TouristGroup> selectAll();
 }

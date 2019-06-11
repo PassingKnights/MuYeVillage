@@ -17,6 +17,9 @@
     <result column="tg_starttime" jdbcType="TIMESTAMP" property="tgStarttime" />
     <result column="tg_endtime" jdbcType="TIMESTAMP" property="tgEndtime" />
   </resultMap>
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT * FROM tourist_group
+  </select>
   <sql id="Base_Column_List">
     tg_id, tg_name, tg_size, h_id, gu_id, tg_days, tg_time, tg_price, sp_id, tg_number, 
     tg_place, tg_allprice, tg_starttime, tg_endtime

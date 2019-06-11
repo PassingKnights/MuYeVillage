@@ -1,5 +1,8 @@
 package com.bdqn.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 //旅游团表
 public class TouristGroup {
@@ -14,7 +17,8 @@ public class TouristGroup {
     private Integer guId;
 
     private Integer tgDays;
-
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgTime;
 
     private Integer tgPrice;
@@ -26,9 +30,11 @@ public class TouristGroup {
     private String tgPlace;
 
     private Integer tgAllprice;
-
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgStarttime;
-
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgEndtime;
 
     public Integer getTgId() {

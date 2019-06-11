@@ -6,6 +6,8 @@ import com.bdqn.service.TouristGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TouristGroupServicelmpl implements TouristGroupService {
     @Autowired
@@ -46,5 +48,12 @@ public class TouristGroupServicelmpl implements TouristGroupService {
     public void updateByPrimaryKey(TouristGroup record) {
         touristGroupMapper.updateByPrimaryKey(record);
 
+    }
+
+    @Override
+    public List<TouristGroup> selectAll() {
+        List<TouristGroup> touristGroups = touristGroupMapper.selectAll();
+
+        return touristGroups;
     }
 }
