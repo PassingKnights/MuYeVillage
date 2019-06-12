@@ -33,4 +33,9 @@
   <select id="selectBySpot" resultMap="BaseResultMap">
 
   </select>
+  <!--根据id查-->
+  <select id="selectById" resultMap="BaseResultMap">
+    select * from `group` where tg_id=#{id}
+  </select>
+
 </mapper>

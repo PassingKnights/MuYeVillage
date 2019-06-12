@@ -9,4 +9,6 @@ public interface GroupMapper {
     public List<Group> selectAll();
     //根据景点查
     public List<Group> selectBySpot();
+    //查某个团
+    Group selectById(Integer id);
 }

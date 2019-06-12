@@ -1,5 +1,8 @@
 package com.bdqn.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //订单表
@@ -9,7 +12,8 @@ public class TrOrder {
     private Integer trId;
 
     private Integer tgId;
-
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orTime;
 
     private String orBoolean;

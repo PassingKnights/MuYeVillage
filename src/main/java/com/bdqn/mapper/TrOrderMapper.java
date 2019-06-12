@@ -21,4 +21,6 @@ public interface TrOrderMapper {
     List<TrOrder> selectAll(@Param("index") Integer index, @Param("limit") Integer limit);
     //查某个人的订单
     List<TrOrder> selectByTrid(@Param("trId")Integer trId);
+    //预定订单
+    int add(@Param("trId")Integer trId,@Param("tgId")Integer tgId,@Param("date")String date);
 }

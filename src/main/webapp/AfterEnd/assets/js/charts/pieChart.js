@@ -18,11 +18,11 @@ option = {
     legend: {
         orient: 'vertical',
         x: 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        data:['丽江','三亚','凤凰古城','长城','九寨沟']
     },
     series: [
         {
-            name:'访问来源',
+            name:'景点',
             type:'pie',
             radius: ['50%', '70%'],
             avoidLabelOverlap: false,
@@ -45,11 +45,11 @@ option = {
                 }
             },
             data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
+                {value:335, name:'丽江'},
+                {value:310, name:'三亚'},
+                {value:234, name:'凤凰古城'},
+                {value:135, name:'长城'},
+                {value:1548, name:'九寨沟'}
             ]
         }
     ]

@@ -6,8 +6,8 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css" media="all"/>
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all"/>
 
     <title>订单</title>
     <style>
@@ -77,7 +77,7 @@
 			<c:if test="${user ne null }">
 				<span style="font-size: 20px; top: 5px"
 				class="glyphicon glyphicon-user"></span> <a
-				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
+				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.trName }&nbsp;</a>
 			<span>&nbsp;|</span> <a href="../login/login.jsp"
 				style="text-decoration: none; color: rgba(93, 46, 20, 0.92)">
 				&nbsp;注销</a>
@@ -141,8 +141,8 @@
         <p> 沪ICP备12041475|@ChengCheng All Rights reservrd.城成酒店管理有限公司</p>
     </div>
 
-<script src="js/jquery-3.3.1.js"></script>
-<script src="layui-v2.4.5/layui/layui.js"></script>
+<script src="../js/jquery-3.3.1.js"></script>
+<script src="../layui/layui.js"></script>
 <script type="text/html" id="barDemo">
 	<a class="layui-btn layui-btn-primary  layui-btn-xs" lay-event="detail">查看</a>
 </script>
@@ -152,16 +152,18 @@
 		
 		var orderTable = table.render({
 			elem:'#orderTable'
-			,url:'../ShowOrderServlet'
+			,url:'${request.getContextPath()}/order/selectByTrId'
 			,cols:[[
-				{field:'oid', width:90,align:'center', title: '订单编号',sort: true}
-                ,{field:'rid', width:90,align:'center', title: '房间号',sort: true}
-                ,{field:'starttime', width:140,align:'center', title: '入住时间'}
-                ,{field:'endtime', width:140,align:'center', title: '离开时间'}
-                ,{field:'eprice', width:110,align:'center', title: '价格（元）',sort: true}
-                ,{field:'booktime', width:140,align:'center', title: '预定时间'}
-                ,{field:'status', width:80,align:'center', title: '状态'}
-                ,{field:'remark', width:90,align:'center', title: '备注'}
+				{field:'orId', width:90,align:'center', title: '订单编号',sort: true}
+                ,{field:'tgName', width:90,align:'center', title: '旅游团名称',sort: true}
+                ,{field:'tgStarttime', width:140,align:'center', title: '出发时间'}
+                ,{field:'tgEndtime', width:140,align:'center', title: '结束时间'}
+                ,{field:'tgPrice', width:110,align:'center', title: '价格（元）',sort: true}
+                ,{field:'orTime', width:140,align:'center', title: '预定时间'}
+                ,{field:'orBoolean', width:80,align:'center', title: '状态'}
+                ,{field:'hName', width:90,align:'center', title: '酒店'}
+                ,{field:'guName', width:90,align:'center', title: '导游'}
+                ,{field:'spName', width:90,align:'center', title: '景点'}
                 ,{title:'操作',fixed:'right',width:120,align:'center',toolbar:'#barDemo'}
 			]]
 			,page:true
@@ -184,7 +186,7 @@
         		+"<br/>价格（元）："+data.eprice+"<br/>状态："+data.status
         		+"<br/>预定时间："+data.booktime+"<br/>备注："+data.remark;
         		layer.alert(ss); */
-        		window.location.href="OrderInfo.jsp?oid="+data.oid;
+        		window.location.href="${request.getContextPath()}/order/toOrderInfo?orId="+data.orId;
         	}
         });
 		

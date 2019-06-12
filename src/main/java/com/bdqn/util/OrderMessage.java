@@ -1,12 +1,16 @@
 package com.bdqn.util;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.bdqn.pojo.Group;
 import com.bdqn.pojo.TrOrder;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 public class OrderMessage {
     private Integer orId;
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orTime;
     private String orBoolean;
 
@@ -17,8 +21,12 @@ public class OrderMessage {
     //单价
     private Integer tgPrice;
     //出发时间
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgStarttime;
     //结束时间
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgEndtime;
 
     private String hName;
@@ -41,6 +49,23 @@ public class OrderMessage {
     }
 
     public OrderMessage() {
+    }
+
+    @Override
+    public String toString() {
+        return "OrderMessage{" +
+                "orId=" + orId +
+                ", orTime=" + orTime +
+                ", orBoolean='" + orBoolean + '\'' +
+                ", tgName='" + tgName + '\'' +
+                ", tgDays=" + tgDays +
+                ", tgPrice=" + tgPrice +
+                ", tgStarttime=" + tgStarttime +
+                ", tgEndtime=" + tgEndtime +
+                ", hName='" + hName + '\'' +
+                ", guName='" + guName + '\'' +
+                ", spName='" + spName + '\'' +
+                '}';
     }
 
     public Integer getOrId() {

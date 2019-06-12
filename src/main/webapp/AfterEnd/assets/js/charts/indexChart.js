@@ -108,10 +108,70 @@ option = {
     ],
     animation :false
 };
-                    
+    option2 = {
+
+
+
+        legend: {
+            x : 'center',
+            y : 'center',
+
+        },
+
+        grid: {
+            x:0,
+            y:0,
+            x2:0,
+            y2:0
+        },
+
+        toolbox: {
+            show : true,
+            feature : {
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            width: '20%',
+                            height: '30%',
+                            itemStyle : {
+                                normal : {
+                                    label : {
+                                        formatter : function (params){
+                                            return 'other\n' + params.value + '%\n'
+                                        },
+                                        textStyle: {
+                                            baseline : 'middle'
+                                        }
+                                    }
+                                },
+                            }
+                        }
+                    }
+                }
+
+            }
+        },
+        series : [
+            {
+                type : 'pie',
+
+                radius : radius,
+                x: '0%', // for funnel
+                itemStyle : labelFromatter,
+                data : [
+                    {name:'other', value:26, itemStyle : labelBottom},
+                    {name:'', value:74,itemStyle : labelTop}
+                ]
+            }
+
+        ],
+        animation :false
+    };
 	
 	myChart.setOption(option);
-	myChart2.setOption(option);
+	myChart2.setOption(option2);
 })();
 
 
@@ -128,7 +188,7 @@ option = {
     legend: {
         orient : 'vertical',
         x : 'left',
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        data:['丽江','三亚','凤凰古城','长城','九寨沟']
     },
     toolbox: {
         show : true,
@@ -154,7 +214,7 @@ option = {
     calculable : true,
     series : [
         {
-            name:'访问来源',
+            name:'景点',
             type:'pie',
             radius : ['50%', '70%'],
             itemStyle : {
@@ -178,11 +238,11 @@ option = {
                 }
             },
             data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
+                {value:335, name:'丽江'},
+                {value:310, name:'三亚'},
+                {value:234, name:'凤凰古城'},
+                {value:535, name:'长城'},
+                {value:154, name:'九寨沟'}
             ]
         }
     ]
@@ -228,10 +288,10 @@ option = {
     ],
     series : [
         {
-            name:'直接访问',
+            name:'收入',
             type:'bar',
             barWidth: '60%',
-            data:[10, 52, 200, 334, 390, 330, 220]
+            data:[3123,2133, 2342, 2331, 1789, 2453, 1327]
         }
     ]
 };
@@ -253,7 +313,7 @@ option = {
         trigger: 'axis'
     },
     legend: {
-        data:['最高气温','最低气温'],
+        data:['本周','上周'],
         x: "right"
     },
     
@@ -265,14 +325,14 @@ option = {
     yAxis: {
         type: 'value',
         axisLabel: {
-            formatter: '{value} °C'
+            formatter: '{value} '
         }
     },
     series: [
         {
-            name:'最高气温',
+            name:'本周',
             type:'line',
-            data:[11, 11, 15, 13, 12, 13, 10],
+            data:[16, 10, 19, 21, 25, 22, 15],
             markPoint: {
                 data: [
                     {type: 'max', name: '最大值'},
@@ -286,9 +346,9 @@ option = {
             }
         },
         {
-            name:'最低气温',
+            name:'上周',
             type:'line',
-            data:[1, -2, 2, 5, 3, 2, 0],
+            data:[14, 18, 8, 26, 21, 17, 10],
             markPoint: {
                 data: [
                     {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}

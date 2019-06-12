@@ -35,21 +35,24 @@
   </resultMap>
 
   <select id="selectAll" resultMap="BaseResultMap">
-    select * from `order` limit #{index},#{limit}
+    select * from `order` ORDER BY or_id DESC limit #{index},#{limit}
   </select>
   <!--查某个人的订单-->
   <select id="selectByTrid" resultMap="BaseResultMap">
     SELECT * FROM `order` WHERE tr_id=#{trId}
   </select>
+  <!--预定订单-->
+  <insert id="add">
+    INSERT INTO tr_order (tr_id,tg_id,or_time,or_boolean) VALUES(#{trId},#{tgId},#{date},'已预定')
+  </insert>
 
 
   <sql id="Base_Column_List">
     or_id, tr_id, tg_id, or_time, or_boolean
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from tr_order
+    select *
+    from `order`
     where or_id = #{orId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

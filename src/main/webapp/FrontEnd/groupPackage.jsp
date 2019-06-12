@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=Utf-8"
          pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,26 +128,24 @@
         <div class="rows home_enq">
             <div class="container">
                 <div class="home_form">
-                    <!-- ENQUIRY FORM SUCCESS MESSAGE -->
-                    <div class="succ_mess_qe">感谢您与我们联系，我们将很快回复您。</div>
                     <!-- SLIDER ENQUIRY FORM -->
-                    <form id="home_enquiry" name="home_enquiry" action="mail/henquiry.php">
+                    <form id="home_enquiry" name="home_enquiry" action="">
                         <ul>
                             <li class="col-md-2 col-sm-12 col-xs-12">
-                                <h4>快速查询</h4>
+                                <h4>查询景点</h4>
                             </li>
                             <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="text" id="qename" name="qename" placeholder="名字" required>
-                            </li>
-                            <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="email" id="qemail" name="qemail" placeholder="电子邮件ID" required>
-                            </li>
-                            <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="number" id="qephone" name="qephone" placeholder="联系人号码" required>
+                                <input type="text" id="qename" name="qename" placeholder="景点">
                             </li>
 
                             <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input id="tijiao" type="submit" value="提交">
+                                <input type="email" id="qemail" name="qemail" placeholder="电子邮件ID">
+                            </li>
+                            <li class="col-md-2 col-sm-6 col-xs-12">
+                                <input type="number" id="qephone" name="qephone" placeholder="联系人号码">
+                            </li>
+                            <li class="col-md-2 col-sm-6 col-xs-12">
+                                <input id="tijiao" type="submit" value="搜索">
                             </li>
                         </ul>
                     </form>
@@ -159,7 +158,7 @@
         <div class="rows inn-page-bg com-colo">
             <div class="container inn-page-con-bg tb-space pad-bot-redu-5" id="inner-page-title">
                 <!--===== PLACES ======-->
-                <div class="rows p2_2">
+                <div id="lijiang" class="rows p2_2">
                     <div class="col-md-6 col-sm-6 col-xs-12 p2_1">
                         <div class="band"><img src="images/band.png" alt="" />
                         </div>
@@ -186,7 +185,7 @@
                         </div>
                         <div class="p2_book">
                             <ul>
-                                <li><a href="booking.html" class="link-btn">立即预订</a>
+                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=22" class="link-btn">立即预订</a>
                                 </li>
                                 <li><a href="tour-details.html" class="link-btn">查看套餐 </a>
                                 </li>
@@ -196,7 +195,7 @@
                 </div>
                 <!--===== PLACES END ======-->
                 <!--===== PLACES ======-->
-                <div class="rows p2_2">
+                <div id="dali" class="rows p2_2">
                     <div class="col-md-6 col-sm-6 col-xs-12 p2_1">
                         <img src="images/fm2.jpg" width="540" height="346.58" alt="" />
                     </div>
@@ -221,7 +220,7 @@
                         </div>
                         <div class="p2_book">
                             <ul>
-                                <li><a href="booking.html" class="link-btn">立即预订</a>
+                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=22" class="link-btn">立即预订</a>
                                 </li>
                                 <li><a href="tour-details.html" class="link-btn">查看套餐</a>
                                 </li>
@@ -231,7 +230,7 @@
                 </div>
                 <!--===== PLACES END ======-->
                 <!--===== PLACES ======-->
-                <div class="rows p2_2">
+                <div id="sanya" class="rows p2_2">
                     <div class="col-md-6 col-sm-6 col-xs-12 p2_1">
                         <img src="images/fm3.jpg" width="540" height="346.58" alt="" />
                     </div>
@@ -266,7 +265,7 @@
                 </div>
                 <!--===== PLACES END ======-->
                 <!--===== PLACES ======-->
-                <div class="rows p2_2">
+                <div id="beihai" class="rows p2_2">
                     <div class="col-md-6 col-sm-6 col-xs-12 p2_1">
                         <img src="images/fm4.jpg" width="540" height="346.58" alt="" />
                     </div>
@@ -301,12 +300,12 @@
                 </div>
                 <!--===== PLACES END ======-->
                 <!--===== PLACES ======-->
-                <div class="rows p2_2">
+                <div id="menggu" class="rows p2_2">
                     <div class="col-md-6 col-sm-6 col-xs-12 p2_1">
                         <img src="images/fm.5.jpg" width="540" height="346.58" alt="" />
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 p2">
-                        <h3>哈尔滨8天7夜跟团行  <span><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></h3>
+                        <h3>蒙古8天7夜跟团行  <span><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-half-o" aria-hidden="true"></i></span></h3>
                         <p>【跟团游】网红星选☼穿越大草原☼星空帐篷蒙古包☼呼伦贝尔+湿地牧场8日游☼草原BBQ☼</p>
                         <div class="ticket">
                             <ul>
@@ -336,7 +335,7 @@
                 </div>
                 <!--===== PLACES END ======-->
                 <!--===== PLACES ======-->
-                <div class="rows p2_2">
+                <div id="yanan" class="rows p2_2">
                     <div class="col-md-6 col-sm-6 col-xs-12 p2_1">
                         <img src="images/fm.6.jpg" width="540" height="346.58" alt="" />
                     </div>
@@ -556,7 +555,30 @@
 
     <script src="../js/jquery-3.3.1.js"></script>
     <script>
+        $("#tijiao").click(function () {
 
+            var spot = $("#qename").val();
+            console.log(spot);
+            if (spot=="丽江") {
+                $("#lijiang").siblings().hide();
+                $("#lijiang").show();
+            }else if (spot=="大理") {
+                $("#dali").siblings().hide();
+                $("#dali").show();
+            }else if (spot=="蒙古") {
+                $("#menggu").siblings().hide();
+                $("#menggu").show();
+            }else if (spot=="北海") {
+                $("#beihai").siblings().hide();
+                $("#beihai").show();
+            }else if (spot=="延安") {
+                $("#yanan").siblings().hide();
+                $("#yanan").show();
+            }else if (spot=="三亚") {
+                $("#sanya").siblings().hide();
+                $("#sanya").show();
+            }
+        })
     </script>
 </body>
 

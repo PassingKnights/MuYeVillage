@@ -10,17 +10,15 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <link href="css/bootstrap.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="jquery-3.3.1.js"></script>
-    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css"
+    <link rel="stylesheet" href="../layui/css/layui.css"
           media="all">
 
 
@@ -159,7 +157,7 @@
 			<c:if test="${user ne null }">
 				<span style="font-size: 20px; top: 5px"
 				class="glyphicon glyphicon-user"></span> <a
-				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.uname }&nbsp;</a>
+				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.trName }&nbsp;</a>
 			<span>&nbsp;|</span> <a href="../login/login.jsp"
 				style="text-decoration: none; color: rgba(93, 46, 20, 0.92)">
 				&nbsp;注销</a>
@@ -207,31 +205,33 @@
     <ul class="uls">
         <li><img src="img/my1.jpg" style="width: 150px;height: 150px"/>
             <div style="width: 500px;height: 60px;float: right;margin-top: -400px;margin-right: 130px">
-                <span style="font-size: 20px">类型：</span><span style="font-size: 20px">${room.type }</span><br/>
+                <span style="font-size: 20px">名称：</span><span style="font-size: 20px">${group.tgName }</span><br/>
                 <div style="height: 10px"></div>
-                <span style="font-size: 20px">单价：</span><span style="font-size: 20px;  color: rgba(176, 30, 33, 0.87)">${room.price }</span>
+                <span style="font-size: 20px">单价：</span><span style="font-size: 20px;  color: rgba(176, 30, 33, 0.87)">${group.tgPrice }</span>
             </div>
 
             <div style="width: 500px;height: 70px;float: right;margin-top: -310px;margin-right: 130px">
             <h4   >酒店拥有一流的豪华俱乐部、酒吧、娱乐中心、SPA、宴会厅和世界着名品牌精品店等一系列设施恭候各位贵宾的光临。</h4>
             </div>
         </li>
-        <li>姓名：${user.uname }</li>
-        <li>性别：${user.ugender }</li>
-        <li>电话号码：${user.uphone }</li>
-        <li>入住日期：${start }</li>
-        <li>退房日期：${end }</li>
-        <li>总价：${order.eprice }</li>
+        <li>姓名：${user.trName }</li>
+        <li>性别：${user.trSex }</li>
+        <li>电话号码：${user.trPhone }</li>
+        <li>出发日期：${group.tgStarttime }</li>
+        <li>结束日期：${group.tgEndtime }</li>
+        <li>导游：${group.guide.guName }</li>
+        <li>酒店：${group.hotel.hName }</li>
+        <li>景点：${group.spot.spName }</li>
 
-        <a id="d" href="Order.jsp">确认</a>
-         <a id="q">取消预定</a>
+        <a id="d" href="${request.getContextPath()}/order/ordering">确认</a>
+        <a id="q">取消预定</a>
 
     </ul>
 
-	<input id="otype" type="hidden" value="${order.status }">
-	<input id="oid" type="hidden" value="${order.oid }">
-    <script src="jquery-3.3.1.js"></script>
-    <script src="layui-v2.4.5/layui/layui.js" charset="utf-8"></script>
+	<input id="otype" type="hidden" value="${order.orBoolean }">
+	<%--<input id="oid" type="hidden" value="${order.orId }">--%>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="../layui/layui.js" charset="utf-8"></script>
     <script>
     	$("#q").hide();
     	var type = $("#otype").val();
@@ -239,9 +239,9 @@
     		$("#q").show();
     	}
 		$("#q").click(function(){
-			var oid = $("#oid").val();
+			//var oid = $("#oid").val();
 			
-			window.location.href="../CancelOrderServlet?oid="+oid;
+			window.location.href="cancel";
 		})
 
         layui.use('laydate', function() {

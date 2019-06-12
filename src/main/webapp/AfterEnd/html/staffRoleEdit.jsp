@@ -117,7 +117,7 @@
 		    <div class="content-page">
 			<!-- Start content -->
                 <div class="content">
-                    <div class="card-box">
+                    <div class="card-box" style="height: 600px;">
                         <div class="am-u-sm-12">
 							<form class="layui-form" action="" id="jurform" lay-filter="userEdit">
 								<input type="hidden" value="${stId }" name="stId">

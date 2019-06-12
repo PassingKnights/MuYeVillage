@@ -117,9 +117,9 @@
 		    <div class="content-page">
 			<!-- Start content -->
                 <div class="content">
-                    <div class="card-box">
+                    <div class="card-box" style="height: 600px;">
                         <div class="am-u-sm-12">
-							<div class="layui-row">
+							<div class="layui-row" >
 								<div class="layui-col-md6 layui-col-md-offset1">
 									<form id="roform" class="layui-form" action="" lay-filter="addstaff">
 										<div class="layui-form-item">

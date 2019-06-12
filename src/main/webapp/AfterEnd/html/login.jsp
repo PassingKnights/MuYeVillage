@@ -56,7 +56,7 @@
 		</div>
 
 
-	<script src="../../js/jquery-3.3.1.js"></script>
+	<script src="${request.getContextPath()}/js/jquery-3.3.1.js"></script>
 	<script>
 		$("#login").click(function () {
 			var username = $("#username").val();
@@ -65,7 +65,7 @@
 				if(data==null){
 				    alert("账号密码不正确");
 				}else {
-				    window.location.href="../index.jsp";
+				    window.location.href="${request.getContextPath()}/order/toHome";
 				}
             })
         })

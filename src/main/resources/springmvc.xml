@@ -32,6 +32,7 @@
     <mvc:resources mapping="/bootstrap-table/**" location="/bootstrap-table/"></mvc:resources>
     <mvc:resources mapping="/AfterEnd/**.html" location="/AfterEnd/"/>
     <mvc:resources mapping="/AfterEnd/assets/**" location="/AfterEnd/assets/"/>
+    <mvc:resources mapping="/FrontEnd/**" location="/FrontEnd/"></mvc:resources>
 		<mvc:annotation-driven></mvc:annotation-driven>
     <!--jack转换器-->
 </beans>

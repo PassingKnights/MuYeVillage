@@ -117,7 +117,7 @@
 		    <div class="content-page">
 			<!-- Start content -->
                 <div class="content">
-                    <div class="card-box">
+                    <div class="card-box" style="height: 600px;">
                         <div class="am-u-sm-12">
 							<div class="layui-row">
 								<div class="layui-col-md5 layui-col-md-offset1">
