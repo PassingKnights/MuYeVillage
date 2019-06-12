@@ -11,6 +11,11 @@
     <result column="tr_password" jdbcType="VARCHAR" property="trPassword" />
     <result column="tr_picture" jdbcType="VARCHAR" property="trPicture" />
   </resultMap>
+
+
+
+
+
   <sql id="Base_Column_List">
     tr_id, tr_name, tr_sex, tr_time, tr_phone, tr_email, tr_password, tr_picture
   </sql>
