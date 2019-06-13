@@ -49,36 +49,41 @@
                 <div>
                     <!--====== BRANDING LOGO ==========-->
                     <div class="col-md-4 col-sm-12 col-xs-12 head_left">
-                        <a href="index.html"><img src="images/logo.png" alt="" />
+                        <a href="index.jsp"><strong><span style="color: white;font-size: 30px">小熊旅行社</span></strong>
                         </a>
                     </div>
                     <!--====== HELP LINE & EMAIL ID ==========-->
                     <div class="col-md-8 col-sm-12 col-xs-12 head_right head_right_all">
                         <ul>
-                           <li><a href="#">帮助热线: +101-1231-1231</a>
+                            <li><a href="#">帮助热线: 14736800842</a>
                             </li>
-                            <li><a href="#">Email: contact@worldtours.com</a>
+                            <li><a href="#">Email: 405656434@qq.com</a>
                             </li>
                             <li>
                                 <div class="dropdown">
-                                     <button class="dropbtn">我的帐户</button>
-                                    <div class="dropdown-content">
-                                       <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 登入</a>
-                                        <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i>向我们注册</a>
-                                        <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 我的预订</a>
-                                        <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> 旅游套餐</a>
-                                        <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> 酒店预订</a>
-                                        <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> 取消预订</a>
-                                        <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient电子机票</a>
-                                        <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> 定制旅游计划</a>
-                                    </div>
-								</div>	
+                                    <c:if test="${user eq null}">
+                                        <button class="dropbtn">登录</button>
+                                    </c:if>
+                                    <c:if test="${user ne null}">
+                                        <button class="dropbtn">${user.trName}</button>
+                                        <div class="dropdown-content">
+                                            <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i>我的信息</a>
+                                            <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 我的预订</a>
+                                            <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> 旅游套餐</a>
+                                            <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> 酒店预订</a>
+                                            <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> 取消预订</a>
+                                            <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient电子机票</a>
+                                            <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> 订单查询</a>
+                                            <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 注销</a>
+                                        </div>
+                                    </c:if>
+                                </div>
                             </li>
                         </ul>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!--====== NAVIGATION MENU ==========-->
@@ -99,11 +104,11 @@
                         <!-- NAVIGATION MENU -->
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.html">主页</a></li>
-								<li><a href="family-package.html">家庭套餐</a></li>
-								<li><a href="hotels-list.html">酒店</a>
-                                <li><a href="blog.html">博客</a></li>
-								<li><a href="places.html">位置</a></li>
+                                <li><a href="index.jsp">主页</a></li>
+                                <li><a href="groupPackage.jsp">旅游团套餐</a></li>
+                                <li><a href="hotels-list.jsp">酒店</a>
+                                <li><a href="blog.jsp">博客</a></li>
+                                <li><a href="places.jsp">景点</a></li>
                                 <li><a href="contact.html">联系我们</a></li>
                             </ul>
                             <div class="menu_book"><a href="booking.html">预订您的套餐</a>
@@ -118,7 +123,7 @@
     <section>
         <div class="rows inner_banner">
             <div class="container">
-                <h2><span>家庭套餐 -</span> Top 全世界的家庭套餐</h2><ul><li><a href="#inner-page-title">Home</a></li><li><i class="fa fa-angle-right" aria-hidden="true"></i> </li><li><a href="#inner-page-title" class="bread-acti">家庭套餐</a></li></ul>
+                <h2><span>旅游团套餐 -</span> Top 最热门的团套餐</h2><ul><li><a href="#inner-page-title">Home</a></li><li><i class="fa fa-angle-right" aria-hidden="true"></i> </li><li><a href="#inner-page-title" class="bread-acti">旅游团套餐</a></li></ul>
                 <p>预订旅行套餐，享受与众不同的度假体验 </p>
             </div>
         </div>
@@ -132,17 +137,17 @@
                     <form id="home_enquiry" name="home_enquiry" action="">
                         <ul>
                             <li class="col-md-2 col-sm-12 col-xs-12">
-                                <h4>查询景点</h4>
+                                <h4>查询旅游团</h4>
                             </li>
                             <li class="col-md-2 col-sm-6 col-xs-12">
                                 <input type="text" id="qename" name="qename" placeholder="景点">
                             </li>
 
                             <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="email" id="qemail" name="qemail" placeholder="电子邮件ID">
+                                <input type="text" id="qemail" name="qemail" placeholder="出发时间">
                             </li>
                             <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="number" id="qephone" name="qephone" placeholder="联系人号码">
+                                <input type="text" id="qephone" name="qephone" placeholder="价格">
                             </li>
                             <li class="col-md-2 col-sm-6 col-xs-12">
                                 <input id="tijiao" type="submit" value="搜索">
@@ -220,7 +225,7 @@
                         </div>
                         <div class="p2_book">
                             <ul>
-                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=22" class="link-btn">立即预订</a>
+                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=26" class="link-btn">立即预订</a>
                                 </li>
                                 <li><a href="tour-details.html" class="link-btn">查看套餐</a>
                                 </li>
@@ -255,7 +260,7 @@
                         </div>
                         <div class="p2_book">
                             <ul>
-                                <li><a href="booking.html" class="link-btn">立即预订</a>
+                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=27" class="link-btn">立即预订</a>
                                 </li>
                                 <li><a href="tour-details.html" class="link-btn">查看套餐</a>
                                 </li>
@@ -290,7 +295,7 @@
                         </div>
                         <div class="p2_book">
                             <ul>
-                                <li><a href="booking.html" class="link-btn">立即预订</a>
+                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=25" class="link-btn">立即预订</a>
                                 </li>
                                 <li><a href="tour-details.html" class="link-btn">查看套餐</a>
                                 </li>
@@ -325,7 +330,7 @@
                         </div>
                         <div class="p2_book">
                             <ul>
-                                <li><a href="booking.html" class="link-btn">立即预订</a>
+                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=23" class="link-btn">立即预订</a>
                                 </li>
                                 <li><a href="tour-details.html" class="link-btn">查看套餐</a>
                                 </li>
@@ -360,7 +365,7 @@
                         </div>
                         <div class="p2_book">
                             <ul>
-                                <li><a href="booking.html" class="link-btn">立即预订</a>
+                                <li><a href="${request.getContextPath()}/order/toOrderInfo?tgId=24" class="link-btn">立即预订</a>
                                 </li>
                                 <li><a href="tour-details.html" class="link-btn">查看套餐</a>
                                 </li>

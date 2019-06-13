@@ -13,27 +13,26 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/tourist")
+@RequestMapping("/user")
 public class registerController {
 
     @Resource
     private brTouristService brTouristServiceImpl;
 
-    @RequestMapping("/register")
+    @RequestMapping(value = "/register")
+    @ResponseBody
     public String testParam(@Param("brTourist") BrTourist brTourist) {
+        System.out.println(brTourist);
         List<BrTourist> list = brTouristServiceImpl.list();
 
         for (BrTourist brTourist1 : list) {
-            if (!(brTourist1.getTrEmail().equals(brTourist.getTrEmail()))) {
+            if ((brTourist1.getTrEmail().equals(brTourist.getTrEmail()))) {
                 System.out.println("该邮箱已被注册！");
-                break;
-            } else {
-                brTouristServiceImpl.insertSelective(brTourist);
-                System.out.println("注册成功");
-                break;
+                return "失败";
             }
         }
-        return "test";
+        brTouristServiceImpl.insertSelective(brTourist);
+        return "成功";
     }
 
     @RequestMapping(value = "/login",produces = "text/html;charset=UTF-8")
@@ -44,15 +43,13 @@ public class registerController {
 
             for (BrTourist brTourist : list) {
                 if ((trEmail.equals(brTourist.getTrEmail()))&&(trPassword.equals(brTourist.getTrPassword()))) {
-
                     System.out.println("成功");
                     BrTourist loginTourist = brTouristServiceImpl.selectEmail(trEmail);
                     session.setAttribute("user",loginTourist);
-                    return "成功";
+                    return "{\"result\":\"成功\"}";
                 }
-
         }
-        return "失败";
+        return "{\"result\":\"失败\"}";
     }
 }
 

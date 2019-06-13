@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -44,36 +46,41 @@
                 <div>
                     <!--====== BRANDING LOGO ==========-->
                     <div class="col-md-4 col-sm-12 col-xs-12 head_left">
-                        <a href="index.html"><img src="images/logo.png" alt="" />
+                        <a href="index.jsp"><strong><span style="color: white;font-size: 30px">小熊旅行社</span></strong>
                         </a>
                     </div>
                     <!--====== HELP LINE & EMAIL ID ==========-->
                     <div class="col-md-8 col-sm-12 col-xs-12 head_right head_right_all">
                         <ul>
-                            <li><a href="#">帮助热线: +101-1231-12301</a>
+                            <li><a href="#">帮助热线: 14736800842</a>
                             </li>
-                            <li><a href="#">Email: contact@worldtours.com</a>
+                            <li><a href="#">Email: 405656434@qq.com</a>
                             </li>
                             <li>
                                 <div class="dropdown">
-                                    <button class="dropbtn">我的账户</button>
-                                    <div class="dropdown-content">
-                                        <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 登入</a>
-                                        <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i> 向我们注册 </a>
-                                        <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 我的预订</a>
-                                        <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> 旅游套餐</a>
-                                        <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> 酒店预订</a>
-                                        <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> 取消预订</a>
-                                        <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient电子机票</a>
-                                        <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> 定制旅游计划</a>
-                                    </div>
-								</div>	
+                                    <c:if test="${user eq null}">
+                                        <button class="dropbtn">登录</button>
+                                    </c:if>
+                                    <c:if test="${user ne null}">
+                                        <button class="dropbtn">${user.trName}</button>
+                                        <div class="dropdown-content">
+                                            <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i>我的信息</a>
+                                            <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 我的预订</a>
+                                            <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> 旅游套餐</a>
+                                            <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> 酒店预订</a>
+                                            <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> 取消预订</a>
+                                            <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient电子机票</a>
+                                            <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> 订单查询</a>
+                                            <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 注销</a>
+                                        </div>
+                                    </c:if>
+                                </div>
                             </li>
                         </ul>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!--====== NAVIGATION MENU ==========-->
@@ -94,12 +101,12 @@
                         <!-- NAVIGATION MENU -->
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.html">主页</a></li>
-								<li><a href="family-package.html">家庭套餐</a></li>
-								<li><a href="hotels-list.html">酒店</a>
-                                <li><a href="blog.html">博客</a></li>
-								<li><a href="places.html">位置</a></li>
-                                <li><a href="contact.html">联系我们 Us</a></li>
+                                <li><a href="index.jsp">主页</a></li>
+                                <li><a href="groupPackage.jsp">旅游团套餐</a></li>
+                                <li><a href="hotels-list.jsp">酒店</a>
+                                <li><a href="blog.jsp">博客</a></li>
+                                <li><a href="places.jsp">景点</a></li>
+                                <li><a href="contact.html">联系我们</a></li>
                             </ul>
                             <div class="menu_book"><a href="booking.html">预订您的套餐</a>
                             </div>
@@ -114,7 +121,7 @@
         <div class="rows inner_banner">
             <div class="container">
                 <h2><span>Now Book -</span> 你的观光胜地 </h2><ul><li><a href="#inner-page-title">主页</a></li><li><i class="fa fa-angle-right" aria-hidden="true"></i> </li><li><a href="#inner-page-title" class="bread-acti">观光 </a></li></ul>
-                <p>预订旅行套餐，享受与众不同的度假体验 </p>
+                <p>浏览名胜古迹，下一个奇迹就是你 </p>
             </div>
         </div>
     </section>
@@ -124,13 +131,13 @@
             <div class="container inn-page-con-bg tb-space pad-bot-redu" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title col-md-12">
-                    <h2>TOP <span>观光</span> 本月</h2>
+                    <h2>旅游 <span>观光</span> 名景</h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>全球领先的旅游预订网站，全球超过30000个套餐。预订旅行套餐，享受与众不同的度假体验 </p>
+                    <p>选择你心中的港湾，你心中那个Ta就在那儿等你。</p>
                 </div>
                 <div>
                     <!--====== PACKAGE ==========-->

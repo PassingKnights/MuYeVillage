@@ -19,7 +19,6 @@ public class brTouristServiceImpl implements brTouristService {
 
     @Override
     public List<BrTourist> list() {
-        System.out.println("test");
         return brTouristMapper.SelAll();
     }
 

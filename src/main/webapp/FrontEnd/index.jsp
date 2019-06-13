@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -46,29 +48,34 @@
                 <div>
                     <!--====== BRANDING LOGO ==========-->
                     <div class="col-md-4 col-sm-12 col-xs-12 head_left">
-                        <a href="index.html"><img src="images/logo.png" alt="" />
+                        <a href="index.jsp"><strong><span style="color: white;font-size: 30px">小熊旅行社</span></strong>
                         </a>
                     </div>
                     <!--====== HELP LINE & EMAIL ID ==========-->
                     <div class="col-md-8 col-sm-12 col-xs-12 head_right head_right_all">
                         <ul>
-                            <li><a href="#">帮助热线: +101-1231-12301</a>
+                            <li><a href="#">帮助热线: 14736800842</a>
                             </li>
-                            <li><a href="#">Email: contact@worldtours.com</a>
+                            <li><a href="#">Email: 405656434@qq.com</a>
                             </li>
                             <li>
                                 <div class="dropdown">
-                                    <button class="dropbtn">我的帐户</button>
-                                    <div class="dropdown-content">
-                                        <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 登入</a>
-                                        <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i>向我们注册</a>
-                                        <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 我的预订</a>
-                                    /    <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> 旅游套餐</a>
-                                        <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> 酒店预订</a>
-                                        <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> 取消预订</a>
-                                        <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient电子机票</a>
-                                        <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> 定制旅游计划</a>
-                                    </div>
+                                    <c:if test="${user eq null}">
+                                        <button class="dropbtn">登录</button>
+                                    </c:if>
+                                    <c:if test="${user ne null}">
+                                        <button class="dropbtn">${user.trName}</button>
+                                        <div class="dropdown-content">
+                                            <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i>我的信息</a>
+                                            <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 我的预订</a>
+                                            <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> 旅游套餐</a>
+                                            <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> 酒店预订</a>
+                                            <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> 取消预订</a>
+                                            <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient电子机票</a>
+                                            <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> 订单查询</a>
+                                            <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 注销</a>
+                                        </div>
+                                    </c:if>
 								</div>	
                             </li>
                         </ul>
@@ -96,11 +103,11 @@
                         <!-- NAVIGATION MENU -->
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
-                                <li><a href="index.html">主页</a></li>
-								<li><a href="family-package.html">家庭套餐</a></li>
-								<li><a href="hotels-list.html">酒店</a>
-                                <li><a href="blog.html">博客</a></li>
-								<li><a href="places.html">位置</a></li>
+                                <li><a href="index.jsp">主页</a></li>
+								<li><a href="groupPackage.jsp">旅游团套餐</a></li>
+								<li><a href="hotels-list.jsp">酒店</a>
+                                <li><a href="blog.jsp">博客</a></li>
+								<li><a href="places.jsp">景点</a></li>
                                 <li><a href="contact.html">联系我们</a></li>
                             </ul>
                             <div class="menu_book"><a href="booking.html">预订您的套餐</a>
@@ -140,53 +147,20 @@
                     <div class="item">
                         <!--<img src="images/slider/2.png" alt="Chania" width="460" height="345">-->
                         <div class="carousel-caption slider-cap">
-                            <h1 class="wow fadeInDown" data-wow-duration="1s">酒店和餐厅预订</h1>
-                            <p class="wow fadeInUp" data-wow-duration="1.5s">全球领先的酒店预订网站，全球超过30000间酒店客房。预订酒店客房，享受假期</p>
-                            <a href="hotels-list.html" class="hs1 wow fadeInUp" data-wow-duration="2.0s">现在开始！</a>
+                            <h1 class="wow fadeInDown" data-wow-duration="1s">好的酒店对的你，这就是我们的开始</h1>
+                            <p class="wow fadeInUp" data-wow-duration="1.5s">领先酒店预订，快人一步的选择，快人一步的享受。预订酒店客房，享受美好的假期</p>
+                            <a href="hotels-list.jsp" class="hs1 wow fadeInUp" data-wow-duration="2.0s">现在开始！</a>
                         </div>
                     </div>
 
                     <div class="item">
                         <!--<img src="images/slider/3.png" alt="Chania" width="460" height="345">-->
                         <div class="carousel-caption slider-cap">
-                            <h1 class="wow fadeInDown" data-wow-duration="1s">蜜月套餐6晚7天</h1>
+                            <h1 class="wow fadeInDown" data-wow-duration="1s">蜜月套餐6晚7天。丽江大理，放飞心灵的地方</h1>
                             <p class="wow fadeInUp" data-wow-duration="1.5s">大理是可以洗心的；还有一个朋友说，大理的云可以让自己呆呆地看上一整天。</p>
                             <a href="tour-details.html" class="hs1 wow fadeInUp" data-wow-duration="2.0s">现在开始！</a>
                         </div>
                     </div>					
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--====== SLIDER ENQUIRY ==========-->
-    <section>
-        <div class="rows home_enq">
-            <div class="container">
-                <div class="home_form">
-                    <!-- ENQUIRY FORM SUCCESS MESSAGE -->
-                    <div class="succ_mess_qe">感谢您与我们联系，我们将很快回复您。</div>
-                    <!-- SLIDER ENQUIRY FORM -->
-                    <form id="home_enquiry" name="home_enquiry" action="mail/henquiry.php">
-                        <ul>
-                            <li class="col-md-2 col-sm-12 col-xs-12">
-                                <h4>快速查询</h4>
-                            </li>
-                            <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="text" id="qename" name="qename" placeholder="名字" required>
-                            </li>
-                            <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="email" id="qemail" name="qemail" placeholder="电子邮件ID" required>
-                            </li>
-                            <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="number" id="qephone" name="qephone" placeholder="联系人号码" required>
-                            </li>
-
-                            <li class="col-md-2 col-sm-6 col-xs-12">
-                                <input type="submit" value="提交">
-                            </li>
-                        </ul>
-                    </form>
                 </div>
             </div>
         </div>
@@ -198,13 +172,13 @@
             <div class="container">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title">
-                    <h2>Top<span>旅游套餐</span>本月</h2>
+                    <h2>Top<span>著名景点</span>本月</h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>全球领先的旅游预订网站，全球超过30000个套餐。预订旅行套餐，享受与众不同的度假体验</p>
+                    <p>山山水水，白雪郁郁，遍地的足迹，弥漫物语。走出你的天地，踏上你的征程。</p>
                 </div>
                 <div>
                     <!-- TOUR PLACE 1 -->
@@ -416,13 +390,13 @@
             <div class="container">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title">
-                    <h2>Top <span>1024大酒店</span> 预订现在打开!</h2>
+                    <h2>Top <span>大酒店</span> 预订现在开始!</h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>全球领先的酒店预订网站，全球超过30000间酒店客房。预订酒店客房，享受与众不同的度假体验</p>
+                    <p>领先的酒店预订。预订酒店客房，享受与众不同的度假体验</p>
                 </div>
                 <!-- HOTEL GRID -->
                 <div class="to-ho-hotel">
@@ -574,13 +548,13 @@
             <div class="container events events-1" id="inner-page-title">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title">
-                    <h2>Top <span>旅游套餐</span> 本月</h2>
+                    <h2>Top <span>旅游景点</span> 本周</h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>全球领先的旅游预订网站，全球超过30000个套餐。预订旅行套餐，享受与众不同的度假体验</p>
+                    <p>全球最热门的景点体验。预订旅行套餐，享受与众不同的度假体验</p>
                 </div>
                 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索.." title="Type in a name">
                 <table id="myTable">
@@ -597,8 +571,8 @@
                             <td>1</td>
                             <td><img src="images/p1.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">稻城亚丁</a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.20.2019</td>
+                            <td class="e_h1">7:00 </td>
                             <td class="e_h1">川藏</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -607,8 +581,8 @@
                             <td>2</td>
                             <td><img src="images/p2.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">维多利亚港</a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.24.2019</td>
+                            <td class="e_h1">5:00 </td>
                             <td class="e_h1">香港</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -617,8 +591,8 @@
                             <td>3</td>
                             <td><img src="images/p3.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">长城</a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.28.2019</td>
+                            <td class="e_h1">10:00 </td>
                             <td class="e_h1">北京</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -627,8 +601,8 @@
                             <td>4</td>
                             <td><img src="images/p4.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">外滩 </a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.23.2019</td>
+                            <td class="e_h1">20:00 </td>
                             <td class="e_h1">上海</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -637,8 +611,8 @@
                             <td>5</td>
                             <td><img src="images/p5.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">雷锋塔 </a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.29.2019</td>
+                            <td class="e_h1">19:00 </td>
                             <td class="e_h1">杭州</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -647,8 +621,8 @@
                             <td>6</td>
                             <td><img src="images/p6.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">秦淮河 </a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.20.2019</td>
+                            <td class="e_h1">8:00</td>
                             <td class="e_h1">南京</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -657,8 +631,8 @@
                             <td>7</td>
                             <td><img src="images/p7.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">鼓浪屿 </a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.20.2019</td>
+                            <td class="e_h1">14:00</td>
                             <td class="e_h1">厦门</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -667,8 +641,8 @@
                             <td>8</td>
                             <td><img src="images/p8.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">锦里古街 </a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.20.2019</td>
+                            <td class="e_h1">10.00 </td>
                             <td class="e_h1">成都</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -677,8 +651,8 @@
                             <td>9</td>
                             <td><img src="images/p9.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">钟楼 </a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.22.2019</td>
+                            <td class="e_h1">21:00 </td>
                             <td class="e_h1">西安</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -687,8 +661,8 @@
                             <td>10</td>
                             <td><img src="images/p10.jpg" width="110" height="80.97" alt="" /><a href="#" class="events-title">象鼻山 </a>
                             </td>
-                            <td class="e_h1">16.12.2016</td>
-                            <td class="e_h1">10.00 PM</td>
+                            <td class="e_h1">6.21.2019</td>
+                            <td class="e_h1">21:00</td>
                             <td class="e_h1">桂林</td>
                             <td><a href="booking.html" class="link-btn">立即预订 </a>
                             </td>
@@ -706,13 +680,13 @@
             <div class="pla1 p-home container">
                 <!-- TITLE & DESCRIPTION -->
                 <div class="spe-title spe-title-1">
-                    <h2>Top <span>旅游套餐 </span> 本月 </h2>
+                    <h2>Top <span>旅游团套餐 </span> 本月 </h2>
                     <div class="title-line">
                         <div class="tl-1"></div>
                         <div class="tl-2"></div>
                         <div class="tl-3"></div>
                     </div>
-                    <p>全球领先的旅游预订网站，全球超过30000个套餐。预订旅行套餐，享受与众不同的度假体验 </p>
+                    <p>最新最好的服务旅游团套餐。预订旅行套餐，享受与众不同的度假体验 </p>
                 </div>
                 <div class="popu-places-home">
                     <!-- POPULAR PLACES 1 -->
@@ -733,7 +707,7 @@
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <h3><span>大理8天7夜跟团游</span> 8 Days / 7 Nights</h3>
-                            <p>【跟团游】暑期惊天价♥爆品0自费<五星酒店、四大5A景区>不带一分钱游云南の儿童免车餐 </p>
+                            <p>【跟团游】暑期惊天价♥爆品0自费（五星酒店、四大5A景区）不带一分钱游云南の儿童免车餐 </p>
                             <a href="tour-details.html" class="link-btn">了解详情</a>
                         </div>
                     </div>
@@ -765,283 +739,6 @@
             </div>
         </div>
     </section>
-
-    <!--====== REQUEST A QUOTE ==========-->
-    <section>
-        <div class="ho-popu tb-space pad-bot-redu">
-            <div class="rows container">
-                <!-- TITLE & DESCRIPTION -->
-                <div class="spe-title">
-                    <h2>Top <span>品牌宣传</span>本月</h2>
-                    <div class="title-line">
-                        <div class="tl-1"></div>
-                        <div class="tl-2"></div>
-                        <div class="tl-3"></div>
-                    </div>
-                    <p>全球领先的旅游预订网站，全球超过30000个套餐。预订旅行套餐，享受与众不同的度假体验 </p>
-                </div>
-                <div class="ho-popu-bod">
-                    <div class="col-md-4">
-                        <div class="hot-page2-hom-pre-head">
-                            <h4>Top Branding <span>Hotels</span></h4>
-                        </div>
-                        <div class="hot-page2-hom-pre">
-                            <ul>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/hotels/1.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Taaj Club House</h5>
-                                            <span>City: illunois, United States</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>4.5</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/hotels/2.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Universal luxury Grand Hotel</h5>
-                                            <span>City: Rio,Brazil</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>4.2</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/hotels/3.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Barcelona Grand Pales</h5>
-                                            <span>City: Chennai,India</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>5.0</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/hotels/4.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Lake Palace view Hotel</h5>
-                                            <span>City: Beijing,China</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>2.5</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/hotels/8.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>First Class Grandd Hotel</h5>
-                                            <span>City: Berlin,Germany</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>4.0</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="hot-page2-hom-pre-head">
-                            <h4>Top Branding <span>Packages</span></h4>
-                        </div>
-                        <div class="hot-page2-hom-pre">
-                            <ul>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/trends/1.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Family Package Luxury</h5>
-                                            <span>Duration: 7 Days and 6 Nights</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>4.1</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/trends/2.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Honeymoon Package Luxury</h5>
-                                            <span>Duration: 14 Days and 13 Nights</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>4.4</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/trends/3.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Group Package Luxury</h5>
-                                            <span>Duration: 28 Days and 29 Nights</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-
-                                            <span>3.0</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/trends/4.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Regular Package Luxury</h5>
-                                            <span>Duration: 12 Days and 11 Nights</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>3.5</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/trends/1.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Custom Package Luxury</h5>
-                                            <span>Duration: 10 Days and 10 Nights</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <span>5.0</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-4">
-                        <div class="hot-page2-hom-pre-head">
-                            <h4>Top Branding <span>Reviewers</span></h4>
-                        </div>
-                        <div class="hot-page2-hom-pre">
-                            <ul>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/reviewer/1.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Christopher</h5>
-                                            <span>No of Reviews: 620, City: illunois</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/reviewer/2.png" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Matthew</h5>
-                                            <span>No of Reviews: 48, City: Rio</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/reviewer/3.jpeg.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Stephanie</h5>
-                                            <span>No of Reviews: 560, City: Chennai</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/reviewer/4.jpeg.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Robert</h5>
-                                            <span>No of Reviews: 920, City: Beijing</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!--LISTINGS-->
-                                <li>
-                                    <a href="hotels-list.html">
-                                        <div class="hot-page2-hom-pre-1">
-                                            <img src="images/reviewer/5.jpeg.jpg" alt="">
-                                        </div>
-                                        <div class="hot-page2-hom-pre-2">
-                                            <h5>Danielle</h5>
-                                            <span>No of Reviews: 768, City: Berlin</span>
-                                        </div>
-                                        <div class="hot-page2-hom-pre-3">
-                                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><div class="tlinks">收集 <a href="#"  title=""></a></div>
-    </section>
-
-
-
     <!--====== TIPS BEFORE TRAVEL ==========-->
     
     <!--====== FOOTER 1 ==========-->
