@@ -15,22 +15,22 @@
 		<div class="account-pages">
 			<div class="wrapper-page">
 				<div class="text-center">
-	                <a href="index.html" class="logo"><span>Admin<span>to</span></span></a>
+	                <a href="index.html" class="logo"><span>小熊旅行社</span></a>
 	            </div>
 	            
 	            <div class="m-t-40 card-box">
 	            	<div class="text-center">
-	                    <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
+	                    <h4 class="text-uppercase font-bold m-b-0">后台管理</h4>
 	                </div>
 	                <div class="panel-body">
 	                	<form class="am-form">
 	                		<div class="am-g">
 	                			<div class="am-form-group">
-							      <input id="username" type="email" class="am-radius"  placeholder="Username">
+							      <input id="username" type="email" class="am-radius"  placeholder="用户名">
 							    </div>
 							
 							    <div class="am-form-group form-horizontal m-t-20">
-							      <input id="password" type="password" class="am-radius"  placeholder="Password">
+							      <input id="password" type="password" class="am-radius"  placeholder="密码">
 							    </div>
 							    
 							    <div class="am-form-group ">
@@ -40,7 +40,7 @@
 		                        </div>
 		                        
 		                        <div class="am-form-group ">
-		                        	<button id="login" type="button" class="am-btn am-btn-primary am-radius" style="width: 100%;height: 100%;">Log In</button>
+		                        	<button id="login" type="button" class="am-btn am-btn-primary am-radius" style="width: 100%;height: 100%;">登录</button>
 		                        </div>
 		                        
 		                        <div class="am-form-group ">
@@ -62,7 +62,7 @@
 			var username = $("#username").val();
 			var password = $("#password").val();
 			$.getJSON("${request.getContextPath()}/staff/login",{"username":username,"password":password},function (data) {
-				if(data==null){
+				if(data.result=='失败'){
 				    alert("账号密码不正确");
 				}else {
 				    window.location.href="${request.getContextPath()}/order/toHome";

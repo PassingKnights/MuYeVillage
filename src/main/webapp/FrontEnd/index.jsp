@@ -73,7 +73,7 @@
                                             <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> 取消预订</a>
                                             <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient电子机票</a>
                                             <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> 订单查询</a>
-                                            <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 注销</a>
+                                            <a href="../userlogin.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i> 注销</a>
                                         </div>
                                     </c:if>
 								</div>	

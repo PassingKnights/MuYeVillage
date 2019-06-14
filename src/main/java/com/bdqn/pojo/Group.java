@@ -1,5 +1,8 @@
 package com.bdqn.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 //旅游团表(傅城新建以对象映射)
@@ -22,8 +25,12 @@ public class Group {
     //所有总价
     private Integer tgAllprice;
     //出发时间
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgStarttime;
     //结束时间
+    @JSONField(format = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date tgEndtime;
 
     //酒店

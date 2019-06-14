@@ -20,7 +20,7 @@
 		<!-- Begin page -->
 		<header class="am-topbar am-topbar-fixed-top">		
 			<div class="am-topbar-left am-hide-sm-only">
-                <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="zmdi zmdi-layers"></i></a>
+                <a href="index.html" class="logo"><span>${staff.stName}</span><i class="zmdi zmdi-layers"></i></a>
             </div>
 	
 			<div class="contain">
@@ -58,7 +58,7 @@
 	                            <img src="../assets/img/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
 	                            <div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>
 	                        </div>
-	                        <h5><a href="#">Mat Helme</a> </h5>
+	                        <h5><a href="login.jsp">[注销]</a> </h5>
 	                        <ul class="list-inline">
 	                            <li>
 	                                <a href="#">
@@ -74,32 +74,38 @@
 	                        </ul>
 	                    </div>
 	                    <!-- End User -->
-	            
-						 <ul class="am-list admin-sidebar-list">
-						    <li><a href="../index.html"><span class="am-icon-home"></span> 首页</a></li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 表格 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
-						        <li><a href="table_basic.html" class="am-cf"> 基本表格</a></li>
-						        <li><a href="table_complete.html">完整表格</a></li>
-						      </ul>
-						    </li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart" aria-hidden="true"></i> 统计图表 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
-						        <li><a href="chart_line.html" class="am-cf"> 折线图</a></li>
-						        <li><a href="chart_columnar.html" class="am-cf"> 柱状图</a></li>
-						        <li><a href="chart_pie.html" class="am-cf"> 饼状图</a></li>
-						      </ul>
-						    </li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 表单 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
-						        <li><a href="form_basic.html" class="am-cf"> 基本表单</a></li>
-						        <li><a href="form_validate.html">表单验证</a></li>   
-						      </ul>
-						    </li>
-						  </ul>
+
+						<ul class="am-list admin-sidebar-list">
+							<li><a href="index.html"><span class="am-icon-home"></span> 主页</a></li>
+							<li class="admin-parent">
+								<a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 数据管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+								<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
+									<li><a href="table_complete.jsp" class="am-cf"> 游客管理</a></li>
+									<li><a href="orderManage.jsp">订单管理</a></li>
+									<li><a href="staffManage.jsp">员工管理</a></li>
+									<li><a href="hotelManage.jsp">酒店管理</a></li>
+									<li><a href="guidManage.jsp">导游管理</a></li>
+									<li><a href="TouristManage.jsp">旅游团管理</a></li>
+									<li><a href="touristSpot.jsp">景点管理</a></li>
+								</ul>
+							</li>
+							<li class="admin-parent">
+								<a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart" aria-hidden="true"></i> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+								<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
+									<li><a href="staffRoleManage.jsp" class="am-cf"> 员工权限</a></li>
+									<li><a href="roleManage.jsp" class="am-cf"> 角色管理</a></li>
+									<li><a href="menuManage.jsp" class="am-cf"> 菜单管理</a></li>
+								</ul>
+							</li>
+							<li class="admin-parent">
+								<a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 日志查看 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+								<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
+									<li><a href="form_basic.html" class="am-cf"> 游客日志</a></li>
+									<li><a href="form_validate.html">员工日志</a></li>
+								</ul>
+							</li>
+							<li><a href="dataStatistics.jsp"><span class="am-icon-line-chart"></span>数据统计</a></li>
+						</ul>
 				</div>
 				  </div>
 				  <!-- sidebar end -->
@@ -145,7 +151,8 @@
 													<option value="酒店管理">酒店管理</option>
 													<option value="导游管理">导游管理</option>
 													<option value="旅游团管理">旅游团管理</option>
-													<option value="员工权限">员工管理</option>
+													<option value="景点管理">景点管理</option>
+													<option value="员工权限">员工权限</option>
 													<option value="角色管理">角色管理</option>
 													<option value="菜单管理">菜单管理</option>
 													<option value="游客日志">游客日志</option>

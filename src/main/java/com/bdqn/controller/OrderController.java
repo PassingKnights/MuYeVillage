@@ -110,7 +110,7 @@ public class OrderController {
         List<OrderMessage> list = new ArrayList<>();
         for (TrOrder order : orders) {
             OrderMessage om = new OrderMessage(order);
-            System.out.println(om);
+            list.add(om);
         }
         session.setAttribute("orderList",list);
         return "redirect:/AfterEnd/index.jsp";

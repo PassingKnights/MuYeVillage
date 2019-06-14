@@ -20,13 +20,13 @@
 		<!-- Begin page -->
 		<header class="am-topbar am-topbar-fixed-top">		
 			<div class="am-topbar-left am-hide-sm-only">
-                <a href="index.html" class="logo"><span>Admin<span>to</span></span><i class="zmdi zmdi-layers"></i></a>
+                <a href="index.html" class="logo"><span>${staff.stName}</span><i class="zmdi zmdi-layers"></i></a>
             </div>
 	
 			<div class="contain">
 				<ul class="am-nav am-navbar-nav am-navbar-left">
 
-					<li><h4 class="page-title">基本表格</h4></li>
+					<li><h4 class="page-title">数据分析</h4></li>
 				</ul>
 				
 				<ul class="am-nav am-navbar-nav am-navbar-right">
@@ -58,7 +58,7 @@
 	                            <img src="../assets/img/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
 	                            <div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>
 	                        </div>
-	                        <h5><a href="#">Mat Helme</a> </h5>
+	                        <h5><a href="login.jsp">[注销]</a> </h5>
 	                        <ul class="list-inline">
 	                            <li>
 	                                <a href="#">
@@ -74,50 +74,52 @@
 	                        </ul>
 	                    </div>
 	                    <!-- End User -->
-	            
-						 <ul class="am-list admin-sidebar-list">
-						    <li><a href="../index.html"><span class="am-icon-home"></span> 首页</a></li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 表格 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
-						        <li><a href="table_basic.html" class="am-cf"> 基本表格</a></li>
-						        <li><a href="table_complete.html">完整表格</a></li>
-						      </ul>
-						    </li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart" aria-hidden="true"></i> 统计图表 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
-						        <li><a href="chart_line.html" class="am-cf"> 折线图</a></li>
-						        <li><a href="chart_columnar.html" class="am-cf"> 柱状图</a></li>
-						        <li><a href="chart_pie.html" class="am-cf"> 饼状图</a></li>
-						      </ul>
-						    </li>
-						    <li class="admin-parent">
-						      <a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 表单 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-						      <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
-						        <li><a href="form_basic.html" class="am-cf"> 基本表单</a></li>
-						        <li><a href="form_validate.html">表单验证</a></li>   
-						      </ul>
-						    </li>
-						  </ul>
+
+						<ul class="am-list admin-sidebar-list">
+							<li><a href="index.html"><span class="am-icon-home"></span> 主页</a></li>
+							<li class="admin-parent">
+								<a class="am-cf" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-table"></span> 数据管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+								<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav1">
+									<li><a href="table_complete.jsp" class="am-cf"> 游客管理</a></li>
+									<li><a href="orderManage.jsp">订单管理</a></li>
+									<li><a href="staffManage.jsp">员工管理</a></li>
+									<li><a href="hotelManage.jsp">酒店管理</a></li>
+									<li><a href="guidManage.jsp">导游管理</a></li>
+									<li><a href="TouristManage.jsp">旅游团管理</a></li>
+									<li><a href="touristSpot.jsp">景点管理</a></li>
+								</ul>
+							</li>
+							<li class="admin-parent">
+								<a class="am-cf" data-am-collapse="{target: '#collapse-nav2'}"><i class="am-icon-line-chart" aria-hidden="true"></i> 权限管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+								<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav2">
+									<li><a href="staffRoleManage.jsp" class="am-cf"> 员工权限</a></li>
+									<li><a href="roleManage.jsp" class="am-cf"> 角色管理</a></li>
+									<li><a href="menuManage.jsp" class="am-cf"> 菜单管理</a></li>
+								</ul>
+							</li>
+							<li class="admin-parent">
+								<a class="am-cf" data-am-collapse="{target: '#collapse-nav5'}"><span class="am-icon-file"></span> 日志查看 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+								<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav5">
+									<li><a href="form_basic.html" class="am-cf"> 游客日志</a></li>
+									<li><a href="form_validate.html">员工日志</a></li>
+								</ul>
+							</li>
+							<li><a href="dataStatistics.jsp"><span class="am-icon-line-chart"></span>数据统计</a></li>
+						</ul>
 				</div>
 				  </div>
 				  <!-- sidebar end -->
-    
 				<!--</div>
 			</div>
 		</div>-->
 		<!-- ========== Left Sidebar end ========== -->
-		
-		
-		
 	<!--	<div class="am-g">-->
 		<!-- ============================================================== -->
 		<!-- Start right Content here -->
 		    <div class="content-page">
 			<!-- Start content -->
                 <div class="content">
-                    <div class="card-box">
+                    <div class="card-box" style="height: 800px;">
                         <div class="am-u-sm-12">
 							<div class="layui-row">
 								<div class="layui-col-md6">
@@ -159,28 +161,28 @@
                 },
                 tooltip: {},
                 legend: {
-                    data:['销量']
+                    data:['订单数']
                 },
                 xAxis: {
-                    data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                    data: ["丽江","大理","长城","北海","九寨沟","三亚"]
                 },
                 yAxis: {},
                 series: [{
-                    name: '销量',
+                    name: '订单数',
                     type: 'bar',
-                    data: [5, 20, 36, 10, 10, 20]
+                    data: [25, 20, 36, 24, 26, 20]
                 }]
             };
 
             var option2 = {
                 title:{
-                    text:"订单一周情况"
+                    text:"周情况"
 				},
                 tooltip: {
                     trigger: 'axis'
                 },
                 legend: {
-                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                    data:['丽江','大理','长城','北海','三亚']
                 },
                 grid: {
                     left: '3%',
@@ -203,34 +205,34 @@
                 },
                 series: [
                     {
-                        name:'邮件营销',
+                        name:'丽江',
                         type:'line',
                         stack: '总量',
-                        data:[120, 132, 101, 134, 90, 230, 210]
+                        data:[1200, 1320, 1010, 1304, 900, 2306, 2108]
                     },
                     {
-                        name:'联盟广告',
+                        name:'大理',
                         type:'line',
                         stack: '总量',
-                        data:[220, 182, 191, 234, 290, 330, 310]
+                        data:[2204, 1822, 1911, 2334, 2490, 3320, 3130]
                     },
                     {
-                        name:'视频广告',
+                        name:'长城',
                         type:'line',
                         stack: '总量',
                         data:[150, 232, 201, 154, 190, 330, 410]
                     },
                     {
-                        name:'直接访问',
+                        name:'北海',
                         type:'line',
                         stack: '总量',
-                        data:[320, 332, 301, 334, 390, 330, 320]
+                        data:[3250, 3352, 3051, 3345, 3940, 3530, 3250]
                     },
                     {
-                        name:'搜索引擎',
+                        name:'三亚',
                         type:'line',
                         stack: '总量',
-                        data:[820, 932, 901, 934, 1290, 1330, 1320]
+                        data:[4820, 3932, 3901, 3934, 1290, 1330, 1320]
                     }
                 ]
             };

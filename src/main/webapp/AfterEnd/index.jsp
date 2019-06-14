@@ -57,7 +57,7 @@
 	                            <img src="assets/img/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
 	                            <div class="user-status offline"><i class="am-icon-dot-circle-o" aria-hidden="true"></i></div>
 	                        </div>
-	                        <h5><a href="#">[注销]</a> </h5>
+	                        <h5><a href="html/login.jsp">[注销]</a> </h5>
 	                        <ul class="list-inline">
 	                            <li>
 	                                <a href="#">
@@ -105,7 +105,7 @@
 						    </li>
                              <li><a href="html/dataStatistics.jsp"><span class="am-icon-line-chart"></span>数据统计</a></li>
 						  </ul>
-				</div>
+					</div>
 				  </div>
 				  <!-- sidebar end -->
 				<!--</div>

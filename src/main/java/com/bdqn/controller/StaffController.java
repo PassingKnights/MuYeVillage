@@ -33,7 +33,7 @@ public class StaffController {
     public String login(String username,String password,HttpSession session){
         Staff staff = staffService.login(username, password);
         if (staff==null){
-            return null;
+            return "{\"result\":\"失败\"}";
         }
         session.setAttribute("staff",staff);
         return "{\"result\":\"成功\"}";

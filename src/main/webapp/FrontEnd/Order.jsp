@@ -70,15 +70,15 @@
         <div class="d2">
            <c:if test="${user eq null }">
 				<div style="cursor: pointer;margin-top:15px;margin-right:20px">
-					<a style="text-decoration: none" href="../login/login.jsp">登录</a>&nbsp;&nbsp;
-					<a style="text-decoration: none" href="../login/register.jsp">注册</a>
+					<a style="text-decoration: none" href="../userlogin.jsp">登录</a>&nbsp;&nbsp;
+					<a style="text-decoration: none" href="../userlogin.jsp">注册</a>
 				</div>
 			</c:if>
 			<c:if test="${user ne null }">
 				<span style="font-size: 20px; top: 5px"
 				class="glyphicon glyphicon-user"></span> <a
 				style="text-decoration: none; line-height: 40px; color: rgba(93, 46, 20, 0.92)">&nbsp;${user.trName }&nbsp;</a>
-			<span>&nbsp;|</span> <a href="../login/login.jsp"
+			<span>&nbsp;|</span> <a href="../userlogin.jsp"
 				style="text-decoration: none; color: rgba(93, 46, 20, 0.92)">
 				&nbsp;注销</a>
 			</c:if>
