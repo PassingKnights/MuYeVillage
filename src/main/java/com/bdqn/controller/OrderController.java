@@ -70,13 +70,12 @@ public class OrderController {
             session.setAttribute("order",null);
         }
 
-
-        BrTourist user = new BrTourist();
-        user.setTrId(2);
-        user.setTrName("李白");
-        user.setTrPhone("134635838495");
-        user.setTrSex("男");
-        session.setAttribute("user",user);
+//        BrTourist user = new BrTourist();
+//        user.setTrId(2);
+//        user.setTrName("李白");
+//        user.setTrPhone("134635838495");
+//        user.setTrSex("男");
+//        session.setAttribute("user",user);
 
         return "../FrontEnd/OrderInfo.jsp";
     }
@@ -114,5 +113,11 @@ public class OrderController {
         }
         session.setAttribute("orderList",list);
         return "redirect:/AfterEnd/index.jsp";
+    }
+
+    @RequestMapping("/mytest")
+    public String mytest(){
+
+        return "/index.jsp";
     }
 }

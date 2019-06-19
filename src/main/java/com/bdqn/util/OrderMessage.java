@@ -9,6 +9,7 @@ import java.util.Date;
 
 public class OrderMessage {
     private Integer orId;
+
     @JSONField(format = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date orTime;

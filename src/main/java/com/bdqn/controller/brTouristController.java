@@ -6,11 +6,9 @@ import com.bdqn.mapper.PageMapper;
 import com.bdqn.pojo.BrTourist;
 import com.bdqn.service.brTouristService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -18,7 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/br")
-public class brTouristController {
+public class BrTouristController {
 
     @Resource
     private brTouristService brTouristServiceImpl;
@@ -26,10 +24,11 @@ public class brTouristController {
     @Resource
     private PageMapper pageMapper;
 
-    @RequestMapping(value = "/page", produces = "application/json;charset=utf-8")
+    @RequestMapping(value = "/page")
     @ResponseBody
     public String pall(Integer page, Integer limit) {
-        List<BrTourist> list = brTouristServiceImpl.list();
+        System.out.println("进来了");
+        List<BrTourist> list = brTouristServiceImpl.list2();
         int i = list.size();
         //sql语句运算
         Integer pags = (page - 1) * limit;
@@ -55,10 +54,9 @@ public class brTouristController {
     @RequestMapping("/login")
     public String login(BrTourist brTourist, HttpSession session) {
         List<BrTourist> login = brTouristServiceImpl.login(brTourist);
-        String trName = brTourist.getTrName();
         if (login.size() == 1) {
+            session.setAttribute("bruser", login);
             System.out.println("有这个人");
-            session.setAttribute("uname",trName);
             return "/luyiList.jsp";
         } else {
             System.out.println("没有这个人");
@@ -70,7 +68,6 @@ public class brTouristController {
     @RequestMapping("/AddUser")
     @ResponseBody
     public Msg adduser(BrTourist brTourist) {
-        System.out.println(975252128);
         int i = brTouristServiceImpl.addBrTourist(brTourist);
         if (i > 0) {
             return Msg.success();
@@ -82,8 +79,7 @@ public class brTouristController {
 
     @RequestMapping("/upde")
     @ResponseBody
-    public Msg updeuser(BrTourist brTourist,@SessionAttribute String uname) {
-        System.out.println(uname+"更新操作");
+    public Msg updeuser(BrTourist brTourist) {
         System.out.println(brTourist);
         int i = brTouristServiceImpl.updBrtourist(brTourist);
         System.out.println(i);
@@ -109,4 +105,3 @@ public class brTouristController {
         }
     }
 }
-
