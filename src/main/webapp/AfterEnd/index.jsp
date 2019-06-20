@@ -340,7 +340,7 @@
                                                     <tr>
                                                         <td>${order.orId}</td>
                                                         <td>${order.tgName}</td>
-                                                        <td>${order.orTime}</td>
+                                                        <td>${order.hName}</td>
                                                         <td>${order.tgPrice}</td>
                                                         <td>${order.guName}</td>
                                                         <c:if test="${order.orBoolean eq '完成'}">

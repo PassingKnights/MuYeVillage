@@ -217,8 +217,8 @@
         <li>姓名：${user.trName }</li>
         <li>性别：${user.trSex }</li>
         <li>电话号码：${user.trPhone }</li>
-        <li>出发日期：${group.tgStarttime }</li>
-        <li>结束日期：${group.tgEndtime }</li>
+        <li>出发日期：${start }</li>
+        <li>结束日期：${end }</li>
         <li>导游：${group.guide.guName }</li>
         <li>酒店：${group.hotel.hName }</li>
         <li>景点：${group.spot.spName }</li>

@@ -61,11 +61,14 @@ public class OrderController {
         if (tgId!=null){
             Group group = orderService.selectByTgId(tgId);
             session.setAttribute("group",group);
+            session.setAttribute("start",toString(group.getTgStarttime()));
+            session.setAttribute("end",toString(group.getTgEndtime()));
         }
         if (orId!=null){
             TrOrder order = orderService.selectByOrId(orId);
             session.setAttribute("order",order);
             session.setAttribute("group",order.getGroup());
+
         }else {
             session.setAttribute("order",null);
         }
@@ -109,6 +112,7 @@ public class OrderController {
         List<OrderMessage> list = new ArrayList<>();
         for (TrOrder order : orders) {
             OrderMessage om = new OrderMessage(order);
+            om.sethName(toString(om.getOrTime()));
             list.add(om);
         }
         session.setAttribute("orderList",list);
@@ -119,5 +123,12 @@ public class OrderController {
     public String mytest(){
 
         return "/index.jsp";
+    }
+
+    public String toString(Date date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String s = format.format(date);
+        return s;
+
     }
 }
